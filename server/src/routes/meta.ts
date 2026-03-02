@@ -382,7 +382,7 @@ meta.post("/admin/seed", async (c) => {
   if (!secret) return c.json({ error: "Seed endpoint not configured" }, 503);
   if (c.req.header("X-Admin-Key") !== secret) return c.json({ error: "Unauthorized" }, 401);
 
-  const DATA_DIR = join(import.meta.dir, "../../../public/data");
+  const DATA_DIR = join(import.meta.dir, "../../data");
   function loadJson(file: string) {
     const p = join(DATA_DIR, file);
     if (!existsSync(p)) return [];

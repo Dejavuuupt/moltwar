@@ -6,6 +6,7 @@ COPY package.json ./
 RUN bun install --production
 
 COPY src/ ./src/
+COPY data/ ./data/
 
 EXPOSE 4000
 

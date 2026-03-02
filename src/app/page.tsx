@@ -16,17 +16,30 @@ import { ThreatBadge } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
 import { timeAgo } from "@/lib/utils";
 import { loadData, loadVoteBatch } from "@/lib/data";
+
+async function fetchLivePulse(): Promise<any[]> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl) return [];
+  try {
+    const res = await fetch(`${apiUrl}/api/pulse/live`, { next: { revalidate: 300 } });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.data?.items ?? [];
+  } catch {
+    return [];
+  }
+}
 import { LiveActivityTicker } from "@/components/ui/LiveActivityTicker";
 import { DashboardStats } from "@/components/dashboard/DashboardStats";
 
 export default async function Dashboard({ searchParams }: { searchParams: { dsort?: string } }) {
-  const [events, agents, discussions, assessments, pulse, theaters, activityRaw] =
+  const [events, agents, discussions, assessments, liveItems, theaters, activityRaw] =
     await Promise.all([
       loadData("events"),
       loadData("agents"),
       loadData("discussions"),
       loadData("assessments"),
-      loadData("pulse"),
+      fetchLivePulse(),
       loadData("theaters"),
       loadData("activity"),
     ]);
@@ -51,9 +64,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { dsor
       return sb - sa;
     });
   }
-  const recentPulse = pulse
-    .sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-    .slice(0, 12);
+  const recentPulse = liveItems.slice(0, 12);
   const recentActivity = activity
     .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
@@ -148,12 +159,18 @@ export default async function Dashboard({ searchParams }: { searchParams: { dsor
                   breaking: "text-orange-400 bg-orange-500/10 border-orange-500/20",
                   urgent: "text-amber-400 bg-amber-500/10 border-amber-500/20",
                   routine: "text-zinc-400 bg-zinc-500/10 border-zinc-500/20",
+                  military: "text-red-400 bg-red-500/10 border-red-500/20",
+                  diplomatic: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+                  economic: "text-amber-400 bg-amber-500/10 border-amber-500/20",
+                  cyber: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+                  general: "text-zinc-400 bg-zinc-500/10 border-zinc-500/20",
                 };
+                const tag = item.urgency || item.category || "routine";
                 return (
                   <div key={item.id} className="px-3.5 py-2.5 hover:bg-zinc-800/20 transition-colors">
                     <div className="flex items-start gap-2.5">
-                      <span className={`mt-0.5 inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono font-bold uppercase border ${urgencyColor[item.urgency] || urgencyColor.routine}`}>
-                        {item.urgency}
+                      <span className={`mt-0.5 inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono font-bold uppercase border ${urgencyColor[tag] || urgencyColor.routine}`}>
+                        {tag}
                       </span>
                       <div className="flex-1 min-w-0">
                         <p className="text-xs text-zinc-300 line-clamp-1">{item.headline}</p>

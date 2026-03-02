@@ -3,6 +3,8 @@ import { getDb } from "../db";
 import { getCache, cacheKey, TTL } from "../cache";
 import { safeJsonParse, sanitizeLike, parseIntParam } from "../utils";
 import { rateLimiters } from "../middleware/rate-limit";
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
 
 const meta = new Hono();
 
@@ -371,6 +373,73 @@ meta.get("/tags", async (c) => {
   const body = { data: sorted };
   await cache.set(key, body, TTL.TAGS);
   return c.json(body);
+});
+
+// POST /api/admin/seed — seed the database from public/data JSON files
+// Protected by X-Admin-Key header matching ADMIN_SEED_KEY env var
+meta.post("/admin/seed", async (c) => {
+  const secret = process.env.ADMIN_SEED_KEY;
+  if (!secret) return c.json({ error: "Seed endpoint not configured" }, 503);
+  if (c.req.header("X-Admin-Key") !== secret) return c.json({ error: "Unauthorized" }, 401);
+
+  const DATA_DIR = join(import.meta.dir, "../../../public/data");
+  function loadJson(file: string) {
+    const p = join(DATA_DIR, file);
+    if (!existsSync(p)) return [];
+    return JSON.parse(readFileSync(p, "utf-8"));
+  }
+
+  const db = getDb();
+  const results: Record<string, number> = {};
+
+  // Agents
+  const agents = loadJson("agents.json");
+  for (const a of agents) {
+    await db.execute({
+      sql: `INSERT OR REPLACE INTO agents (id, name, full_name, archetype, avatar_url, status, specialization, description, capabilities, focus_areas, stats_analyses, stats_accuracy, stats_discussions, stats_assessments, last_active, claim_token, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [a.id, a.name, a.full_name, a.archetype, a.avatar_url || null, a.status, a.specialization, a.description, JSON.stringify(a.capabilities || []), JSON.stringify(a.focus_areas || []), a.stats?.analyses || 0, a.stats?.accuracy || 0, a.stats?.discussions || 0, a.stats?.assessments || 0, a.last_active || null, a.claim_token || null, a.created_at || new Date().toISOString()],
+    });
+  }
+  results.agents = agents.length;
+
+  // Markets
+  const markets = loadJson("polymarket.json");
+  for (const m of markets) {
+    await db.execute({
+      sql: `INSERT OR REPLACE INTO markets (id, title, slug, category, status, resolution_date, outcome, yes_price, volume_usd, liquidity_usd, created_date, description, resolution_source, tags, price_history)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [m.id, m.title, m.slug || "", m.category, m.status, m.resolution_date || null, m.outcome || null, m.yes_price, m.volume_usd || 0, m.liquidity_usd || 0, m.created_date || null, m.description || "", m.resolution_source || "", JSON.stringify(m.tags || []), JSON.stringify(m.price_history || [])],
+    });
+  }
+  results.markets = markets.length;
+
+  // Events
+  const events = loadJson("events.json");
+  for (const e of events) {
+    await db.execute({
+      sql: `INSERT OR REPLACE INTO events (id, title, type, date, theater_id, location_lat, location_lng, location_name, severity, threat_level, description, sources, tags, actors, verified, fatalities, image_url)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [e.id, e.title, e.type, e.date, e.theater_id, e.location?.lat ?? null, e.location?.lng ?? null, e.location?.name ?? null, e.severity, e.threat_level, e.description, JSON.stringify(e.sources || []), JSON.stringify(e.tags || []), JSON.stringify(e.actors || []), e.verified ? 1 : 0, e.fatalities || 0, e.image_url || null],
+    });
+  }
+  results.events = events.length;
+
+  // Theaters
+  const theaters = loadJson("theaters.json");
+  for (const t of theaters) {
+    await db.execute({
+      sql: `INSERT OR REPLACE INTO theaters (id, name, region, status, description, strategic_significance, key_targets, active_forces, event_count, threat_level, coordinates_lat, coordinates_lng, sorties_flown, missiles_launched, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [t.id, t.name, t.region || null, t.status || null, t.description || null, t.strategic_significance || null, JSON.stringify(t.key_targets || []), JSON.stringify(t.active_forces || []), t.event_count || 0, t.threat_level || null, t.coordinates?.lat ?? null, t.coordinates?.lng ?? null, t.sorties_flown || 0, t.missiles_launched || 0, t.created_at || new Date().toISOString(), t.updated_at || new Date().toISOString()],
+    });
+  }
+  results.theaters = theaters.length;
+
+  // Invalidate all cache keys
+  await getCache().invalidatePattern("*");
+
+  return c.json({ ok: true, seeded: results });
 });
 
 export default meta;

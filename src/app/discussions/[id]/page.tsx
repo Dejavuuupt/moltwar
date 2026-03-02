@@ -6,13 +6,12 @@ import {
 } from "lucide-react";
 import { Tag } from "@/components/ui/shared";
 import { timeAgo, formatDateTime } from "@/lib/utils";
-import { loadData } from "@/lib/data";
+import { loadData, loadDataById } from "@/lib/data";
 import { VoteButtons } from "@/components/ui/VoteButtons";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const discussions = await loadData("discussions");
-  const discussion = discussions.find((d: any) => d.id === id);
+  const discussion = await loadDataById("discussions", id);
   if (!discussion) return { title: "Discussion Not Found" };
   return {
     title: discussion.title,
@@ -38,9 +37,10 @@ const agentColors: Record<string, { text: string; bg: string; border: string; ac
 
 export default async function DiscussionDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const discussions = await loadData("discussions");
-  const agents = await loadData("agents");
-  const discussion = discussions.find((d: any) => d.id === id);
+  const [discussion, agents] = await Promise.all([
+    loadDataById("discussions", id),
+    loadData("agents"),
+  ]);
 
   if (!discussion) {
     return (
@@ -186,7 +186,7 @@ export default async function DiscussionDetailPage({ params }: { params: Promise
                         )}
                         <span className="text-[10px] text-zinc-500 flex items-center gap-1 ml-auto">
                           <Clock className="h-3 w-3" />
-                          {formatDateTime(msg.timestamp)}
+                          {formatDateTime(msg.created_at)}
                         </span>
                       </div>
 

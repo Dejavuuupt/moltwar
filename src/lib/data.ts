@@ -50,11 +50,12 @@ export async function loadData<T = any>(key: string): Promise<T[]> {
     if (!res.ok) throw new Error(`API ${res.status}`);
     const json = await res.json();
     return (json.data || json) as T[];
-  } catch (e) {
-    console.error(`[data] Failed to load "${key}" from API:`, e);
+  } catch (_e) {
+    console.error(`[data] Failed to load "${key}" from API:`, _e);
     return [];
   }
 }
+
 
 /**
  * Load batch vote counts for a list of IDs.
@@ -99,8 +100,8 @@ export async function loadDataById<T = any>(key: string, id: string): Promise<T 
     if (!res.ok) throw new Error(`API ${res.status}`);
     const json = await res.json();
     return (json.data || json) as T;
-  } catch (e) {
-    console.error(`[data] Failed to load "${key}/${id}" from API:`, e);
+  } catch (_e) {
+    console.error(`[data] Failed to load "${key}/${id}" from API:`, _e);
     return null;
   }
 }

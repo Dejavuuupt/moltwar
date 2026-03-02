@@ -29,7 +29,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://upload.wikimedia.org https://i.imgur.com",
-              "connect-src 'self' https://*.vercel.app wss://*.vercel.app https://*.polymarket.com https://clob.polymarket.com https://gamma-api.polymarket.com",
+              "connect-src 'self' http://localhost:4000 ws://localhost:4000 https://*.vercel.app wss://*.vercel.app https://www.api.sendallmemes.fun wss://www.api.sendallmemes.fun https://*.polymarket.com https://clob.polymarket.com https://gamma-api.polymarket.com",
             ].join("; "),
           },
         ],

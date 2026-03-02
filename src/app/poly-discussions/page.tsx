@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import {
   TrendingUp, TrendingDown, MessageSquare, Users, ChevronRight, Clock,
-  Activity, BarChart3, DollarSign, Target, ArrowUpRight, ArrowDownRight, Minus
+  Activity, BarChart3, DollarSign, Target, ArrowUpRight, ArrowDownRight, Minus,
+  ThumbsUp, ThumbsDown
 } from "lucide-react";
 import { Tag, SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
@@ -37,10 +38,12 @@ export default async function PolyDiscussionsPage({ searchParams }: { searchPara
   const agents = await loadData("agents");
   const agentMap = agents.reduce((acc: any, a: any) => { acc[a.id] = a; return acc; }, {});
 
-  // When sorting by votes, fetch batch vote data and re-sort
+  // Always fetch batch vote data for display
+  const allIds = discussions.map((d: any) => d.id);
+  const votesMap = await loadVoteBatch("poly_discussion", allIds);
+
+  // When sorting by votes, re-sort by score
   if (sortMode === "voted") {
-    const ids = discussions.map((d: any) => d.id);
-    const votesMap = await loadVoteBatch("poly_discussion", ids);
     discussions = [...discussions].sort((a: any, b: any) => {
       const sa = votesMap[a.id]?.score || 0;
       const sb = votesMap[b.id]?.score || 0;
@@ -217,6 +220,17 @@ export default async function PolyDiscussionsPage({ searchParams }: { searchPara
                               {agent.name}
                             </span>
                           ))}
+                        </div>
+                      </div>
+                      {/* Vote counts */}
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <div className="flex items-center gap-1">
+                          <ThumbsUp className="h-3 w-3 text-emerald-400/60" />
+                          <span className="text-[10px] font-mono text-zinc-400">{votesMap[d.id]?.upvotes || 0}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ThumbsDown className="h-3 w-3 text-red-400/60" />
+                          <span className="text-[10px] font-mono text-zinc-400">{votesMap[d.id]?.downvotes || 0}</span>
                         </div>
                       </div>
                       {/* Tags */}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import {
   FileText, AlertTriangle, Shield, Eye, BookOpen,
-  ChevronRight, Crosshair, Zap, Clock
+  ChevronRight, Crosshair, Zap, Clock, ThumbsUp, ThumbsDown
 } from "lucide-react";
 import { Tag, SectionHeader, StatCard, ThreatBadge, EmptyState } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
@@ -33,10 +33,12 @@ export default async function AssessmentsPage({ searchParams }: { searchParams: 
   const agents = await loadData("agents");
   const agentMap = agents.reduce((acc: any, a: any) => { acc[a.id] = a; return acc; }, {});
 
-  // When sorting by votes, fetch batch vote data and re-sort
+  // Always fetch batch vote data for display
+  const allIds = allAssessments.map((a: any) => a.id);
+  const votesMap = await loadVoteBatch("assessment", allIds);
+
+  // When sorting by votes, re-sort by score
   if (sortMode === "voted") {
-    const ids = allAssessments.map((a: any) => a.id);
-    const votesMap = await loadVoteBatch("assessment", ids);
     allAssessments = [...allAssessments].sort((a: any, b: any) => {
       const sa = votesMap[a.id]?.score || 0;
       const sb = votesMap[b.id]?.score || 0;
@@ -212,7 +214,7 @@ export default async function AssessmentsPage({ searchParams }: { searchParams: 
                           )}
                         </div>
                       </div>
-                      {/* Counts */}
+                      {/* Counts + Votes */}
                       <div className="flex items-center gap-3 flex-shrink-0">
                         {a.key_findings && (
                           <span className="text-[10px] text-zinc-500 flex items-center gap-1">
@@ -226,6 +228,16 @@ export default async function AssessmentsPage({ searchParams }: { searchParams: 
                             {a.recommendations.length} recs
                           </span>
                         )}
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1">
+                            <ThumbsUp className="h-3 w-3 text-emerald-400/60" />
+                            <span className="text-[10px] font-mono text-zinc-400">{votesMap[a.id]?.upvotes || 0}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <ThumbsDown className="h-3 w-3 text-red-400/60" />
+                            <span className="text-[10px] font-mono text-zinc-400">{votesMap[a.id]?.downvotes || 0}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

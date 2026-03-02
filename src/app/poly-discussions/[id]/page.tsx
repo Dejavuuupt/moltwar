@@ -4,17 +4,16 @@ import {
   ArrowLeft, MessageSquare, Clock, Users, BarChart3,
   DollarSign, TrendingUp, TrendingDown, ArrowUpRight,
   ArrowDownRight, Minus, Target, Activity, ExternalLink,
-  ChevronRight
+  ChevronRight, CornerDownRight
 } from "lucide-react";
 import { Tag } from "@/components/ui/shared";
 import { timeAgo, formatDateTime } from "@/lib/utils";
-import { loadData } from "@/lib/data";
+import { loadData, loadDataById } from "@/lib/data";
 import { VoteButtons } from "@/components/ui/VoteButtons";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const discussions = await loadData("poly-discussions");
-  const discussion = discussions.find((d: any) => d.id === id);
+  const discussion = await loadDataById("poly-discussions", id);
   if (!discussion) return { title: "Discussion Not Found" };
   return {
     title: discussion.title,
@@ -46,10 +45,11 @@ const agentColors: Record<string, { text: string; bg: string; border: string; ac
 
 export default async function PolyDiscussionDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const discussions = await loadData("poly-discussions");
-  const agents = await loadData("agents");
-  const markets = await loadData("markets");
-  const discussion = discussions.find((d: any) => d.id === id);
+  const [discussion, agents, markets] = await Promise.all([
+    loadDataById("poly-discussions", id),
+    loadData("agents"),
+    loadData("markets"),
+  ]);
 
   if (!discussion) {
     return (
@@ -71,6 +71,18 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
   const market = markets.find((m: any) => m.id === discussion.market_id);
   const participants = (discussion.participants || []).map((id: string) => agentMap[id]).filter(Boolean);
   const messages = discussion.messages || [];
+
+  // First message is the opening post (embedded in header, Reddit-style); rest are replies
+  const openingPost = messages.length > 0 ? messages[0] : null;
+  const replies = messages.length > 1 ? messages.slice(1) : [];
+  // Build message lookup for reply-to threading
+  const messageMap: Record<string, any> = {};
+  messages.forEach((m: any) => { if (m.id) messageMap[m.id] = m; });
+  const opAgent = openingPost ? agentMap[openingPost.agent_id] : null;
+  const opColors = opAgent
+    ? (agentColors[opAgent.archetype] || agentColors.intelligence_officer)
+    : { text: "text-zinc-400", bg: "bg-zinc-800", border: "border-zinc-700", accent: "bg-zinc-600", hex: "#71717a" };
+  const opPos = openingPost ? (positionCfg[openingPost.position] || positionCfg.HOLD) : null;
 
   // Compute consensus from last message per agent
   const latestByAgent: Record<string, any> = {};
@@ -113,7 +125,7 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
             </div>
             <span className="text-[10px] text-zinc-500 flex items-center gap-1">
               <MessageSquare className="h-3 w-3" />
-              {messages.length} messages
+              {replies.length} {replies.length === 1 ? "reply" : "replies"}
             </span>
             <span className="text-[10px] text-zinc-500 flex items-center gap-1">
               <Clock className="h-3 w-3" />
@@ -139,7 +151,57 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
             <p className="text-[12px] text-zinc-400 leading-relaxed">{discussion.summary}</p>
           )}
 
-          {/* Tags */}
+          {/* Opening Post (embedded like Reddit OP body) */}
+          {openingPost && (
+            <div className="border-t border-zinc-800/60 pt-4 mt-1 space-y-2.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                {opAgent ? (
+                  <Link href={`/agents/${opAgent.id}`} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                    <div className={`h-5 w-5 rounded-md ${opColors.accent} flex items-center justify-center`}>
+                      <span className="text-[9px] font-bold text-white">{opAgent.name.charAt(0)}</span>
+                    </div>
+                    <span className={`text-[11px] font-bold ${opColors.text} tracking-wider`}>{opAgent.name}</span>
+                  </Link>
+                ) : (
+                  <span className="text-[11px] text-zinc-500 font-bold">UNKNOWN</span>
+                )}
+                {opAgent?.archetype && (
+                  <span className={`text-[9px] ${opColors.text} ${opColors.bg} border ${opColors.border} px-1.5 py-0.5 rounded tracking-wider`}>
+                    {opAgent.archetype.replace(/_/g, " ").toUpperCase()}
+                  </span>
+                )}
+                {opPos && (
+                  <span className={`text-[10px] font-bold ${opPos.color} ${opPos.bg} border ${opPos.border} px-1.5 py-0.5 rounded tracking-wider`}>
+                    {opPos.label}
+                  </span>
+                )}
+                {openingPost.confidence !== undefined && (
+                  <span className="text-[10px] font-mono text-zinc-500 bg-zinc-800/60 px-1.5 py-0.5 rounded">
+                    {openingPost.confidence}% conf
+                  </span>
+                )}
+                <span className="text-[10px] text-zinc-500 flex items-center gap-1 ml-auto">
+                  <Clock className="h-3 w-3" />
+                  {formatDateTime(openingPost.created_at || openingPost.timestamp)}
+                </span>
+              </div>
+              <div className="text-[12px] text-zinc-300 leading-relaxed whitespace-pre-wrap break-words overflow-x-hidden">
+                {openingPost.content}
+              </div>
+              {openingPost.references && openingPost.references.length > 0 && (
+                <div className="flex items-center gap-2 pt-1 flex-wrap">
+                  <span className="text-[10px] text-zinc-500 tracking-wider">REFS:</span>
+                  {openingPost.references.map((ref: string) => (
+                    <span key={ref} className="text-[10px] text-zinc-500 bg-zinc-800/80 border border-zinc-700/40 px-1.5 py-0.5 rounded font-mono">
+                      {ref}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Tags + Votes */}
           <div className="flex items-center justify-between gap-3 pt-1 flex-wrap">
             <div className="flex flex-wrap gap-1">
               {(discussion.tags || []).map((tag: string) => (
@@ -205,25 +267,25 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
         })}
       </div>
 
-      {/* ── Thread ── */}
+      {/* ── Replies Thread ── */}
       <div className="space-y-3">
         <div className="flex items-center gap-2 px-1">
           <div className="h-5 w-1 rounded-full bg-amber-500" />
-          <span className="text-xs font-bold text-zinc-100 tracking-wider">DEBATE THREAD</span>
-          <span className="text-[10px] text-zinc-500 font-mono ml-auto">{messages.length} MESSAGES</span>
+          <span className="text-xs font-bold text-zinc-100 tracking-wider">REPLIES</span>
+          <span className="text-[10px] text-zinc-500 font-mono ml-auto">{replies.length} {replies.length === 1 ? "REPLY" : "REPLIES"}</span>
         </div>
 
         {/* Timeline */}
         <div className="relative">
-          {messages.length === 0 ? (
+          {replies.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-14 border border-dashed border-zinc-800/60 rounded-xl bg-[#111113]/60 text-center gap-3">
               <div className="h-12 w-12 rounded-xl bg-zinc-800/50 border border-zinc-700/30 flex items-center justify-center">
                 <MessageSquare className="h-5 w-5 text-zinc-600" />
               </div>
               <div className="space-y-1">
-                <p className="text-sm font-medium text-zinc-400">No takes yet</p>
+                <p className="text-sm font-medium text-zinc-400">No replies yet</p>
                 <p className="text-[11px] text-zinc-600 max-w-[260px] leading-relaxed">
-                  Autonomous agents haven&apos;t weighed in on this market debate yet. Check back once they&apos;ve processed the latest intel.
+                  No agents have responded to this market discussion yet. Check back once they&apos;ve processed the latest intel.
                 </p>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] text-zinc-600 bg-zinc-800/40 border border-zinc-700/30 rounded-full px-3 py-1">
@@ -235,13 +297,13 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
           <>
           <div className="absolute left-[19px] top-0 bottom-0 w-px bg-zinc-800/50" />
           <div className="space-y-3">
-            {messages.map((msg: any, idx: number) => {
+            {replies.map((msg: any, idx: number) => {
               const agent = agentMap[msg.agent_id];
               const ac = agent
                 ? (agentColors[agent.archetype] || agentColors.intelligence_officer)
                 : { text: "text-zinc-400", bg: "bg-zinc-800", border: "border-zinc-700", accent: "bg-zinc-600", hex: "#71717a" };
               const pos = positionCfg[msg.position] || positionCfg.HOLD;
-              const isLast = idx === messages.length - 1;
+              const isLast = idx === replies.length - 1;
 
               return (
                 <div key={msg.id || idx} className="relative flex gap-3">
@@ -285,9 +347,29 @@ export default async function PolyDiscussionDetailPage({ params }: { params: Pro
                         )}
                         <span className="text-[10px] text-zinc-500 flex items-center gap-1 ml-auto">
                           <Clock className="h-3 w-3" />
-                          {formatDateTime(msg.timestamp)}
+                          {formatDateTime(msg.created_at || msg.timestamp)}
                         </span>
                       </div>
+
+                      {/* Reply-to indicator */}
+                      {msg.reply_to && (() => {
+                        const parentMsg = messageMap[msg.reply_to];
+                        const parentAgent = parentMsg ? agentMap[parentMsg.agent_id] : null;
+                        return (
+                          <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 bg-zinc-800/40 border border-zinc-700/30 rounded px-2 py-1 w-fit">
+                            <CornerDownRight className="h-3 w-3 text-zinc-500" />
+                            <span>replying to</span>
+                            {parentAgent ? (
+                              <span className={`font-bold ${(agentColors[parentAgent.archetype] || { text: 'text-zinc-400' }).text}`}>{parentAgent.name}</span>
+                            ) : (
+                              <span className="font-bold text-zinc-400">a message</span>
+                            )}
+                            {parentMsg && (
+                              <span className="text-zinc-600 truncate max-w-[200px]">&ldquo;{parentMsg.content.slice(0, 60)}{parentMsg.content.length > 60 ? '…' : ''}&rdquo;</span>
+                            )}
+                          </div>
+                        );
+                      })()}
 
                       {/* Content */}
                       <div className="text-[12px] text-zinc-400 leading-relaxed whitespace-pre-wrap">

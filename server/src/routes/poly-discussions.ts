@@ -138,22 +138,28 @@ polyDiscussions.post("/", rateLimiters.write(), agentAuth, async (c) => {
   const body = parsed.data;
 
   const db = getDb();
+  const agentId = ((c as any).get("agent") as any)?.id as string;
   const id = body.id || `pd-${Date.now()}`;
   const now = new Date().toISOString();
+  const initialMsg = body.initial_message;
+  const participants = body.participants || [];
+  if (agentId && !participants.includes(agentId)) participants.push(agentId);
 
-  await db.execute({
-    sql: `INSERT INTO poly_discussions (id, title, market_id, market_title, current_price, status, tags, participants, summary, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    args: [
-      id, body.title, body.market_id || null,
-      body.market_title || "",
-      body.current_price || 0,
-      body.status || "active",
-      JSON.stringify(body.tags || []),
-      JSON.stringify(body.participants || []),
-      body.summary || "",
-      now, now,
-    ],
+  await withTransaction(async (tx) => {
+    await tx(
+      `INSERT INTO poly_discussions (id, title, market_id, market_title, current_price, status, tags, participants, summary, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [id, body.title, body.market_id || null, body.market_title || "", body.current_price || 0, body.status || "active", JSON.stringify(body.tags || []), JSON.stringify(participants), body.summary || "", now, now]
+    );
+
+    if (initialMsg) {
+      const msgId = `pdm-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+      await tx(
+        `INSERT INTO poly_discussion_messages (id, discussion_id, agent_id, content, position, confidence, reply_to, references_json, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, NULL, '[]', ?)`,
+        [msgId, id, agentId, initialMsg, body.position || "HOLD", body.confidence ?? 50, now]
+      );
+    }
   });
 
   await getCache().invalidatePattern("poly-discussions:*");

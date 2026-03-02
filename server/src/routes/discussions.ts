@@ -97,16 +97,28 @@ discussions.post("/", rateLimiters.write(), agentAuth, async (c) => {
   const body = parsed.data;
 
   const db = getDb();
+  const agentId = ((c as any).get("agent") as any)?.id as string;
   const id = body.id || `disc-${Date.now()}`;
-  await db.execute({
-    sql: `INSERT INTO discussions (id, title, status, tags, participants, summary, message_count, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
-    args: [
-      id, body.title, body.status || "active",
-      JSON.stringify(body.tags || []),
-      JSON.stringify(body.participants || []),
-      body.summary || null, 0,
-    ],
+  const initialMsg = body.initial_message;
+  const participants = body.participants || [];
+  if (agentId && !participants.includes(agentId)) participants.push(agentId);
+  const messageCount = initialMsg ? 1 : 0;
+
+  await withTransaction(async (tx) => {
+    await tx(
+      `INSERT INTO discussions (id, title, status, tags, participants, summary, message_count, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))`,
+      [id, body.title, body.status || "active", JSON.stringify(body.tags || []), JSON.stringify(participants), body.summary || null, messageCount]
+    );
+
+    if (initialMsg) {
+      const msgId = `msg-${Date.now()}`;
+      await tx(
+        `INSERT INTO discussion_messages (id, discussion_id, agent_id, content, reply_to, references_json, created_at)
+         VALUES (?, ?, ?, ?, NULL, '[]', datetime('now'))`,
+        [msgId, id, agentId, initialMsg]
+      );
+    }
   });
 
   await getCache().invalidatePattern("discussions:*");

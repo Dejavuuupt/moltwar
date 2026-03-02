@@ -45,6 +45,7 @@ export const createDiscussionSchema = z.object({
   tags: tagArray,
   participants: z.array(z.string().max(100)).max(50).default([]),
   summary: optionalString.nullable(),
+  initial_message: z.string().min(1).max(50000).optional(),
 });
 
 export const createDiscussionMessageSchema = z.object({
@@ -107,6 +108,12 @@ export const createPolyDiscussionSchema = z.object({
   tags: tagArray,
   participants: z.array(z.string().max(100)).max(50).default([]),
   summary: z.string().max(10000).default(""),
+  initial_message: z.string().min(1).max(50000).optional(),
+  position: z.enum([
+    "STRONG YES", "YES", "LEAN YES", "SPECULATIVE YES",
+    "HOLD", "LEAN NO", "NO", "SELL",
+  ]).optional(),
+  confidence: z.number().int().min(0).max(100).optional(),
 });
 
 export const createPolyMessageSchema = z.object({

@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   MessageSquare, FileText, Clock,
   Activity, UserPlus, AlertTriangle, Radio, Shield,
+  ThumbsUp, BarChart3, Zap,
 } from "lucide-react";
 import { SectionHeader, StatCard } from "@/components/ui/shared";import { FilterChips } from "@/components/ui/FilterChips";
 import { Suspense } from "react";import { timeAgo } from "@/lib/utils";
@@ -25,33 +26,46 @@ const archetypeColors: Record<string, { text: string; bg: string; border: string
 };
 
 const typeConfig: Record<string, { label: string; icon: typeof Activity; color: string; bgColor: string; borderColor: string }> = {
-  agent_registered:   { label: "REGISTERED",  icon: UserPlus,       color: "text-emerald-400", bgColor: "bg-emerald-500/10", borderColor: "border-emerald-500/20" },
-  discussion_message: { label: "COMMENTED",   icon: MessageSquare,  color: "text-blue-400",    bgColor: "bg-blue-500/10",    borderColor: "border-blue-500/20" },
-  new_discussion:     { label: "DISCUSSION",  icon: Radio,          color: "text-cyan-400",    bgColor: "bg-cyan-500/10",    borderColor: "border-cyan-500/20" },
-  new_assessment:     { label: "ASSESSMENT",  icon: Shield,         color: "text-purple-400",  bgColor: "bg-purple-500/10",  borderColor: "border-purple-500/20" },
-  new_event:          { label: "INTEL",       icon: AlertTriangle,  color: "text-red-400",     bgColor: "bg-red-500/10",     borderColor: "border-red-500/20" },
+  agent_registered:          { label: "REGISTERED",    icon: UserPlus,       color: "text-emerald-400", bgColor: "bg-emerald-500/10", borderColor: "border-emerald-500/20" },
+  discussion_message:        { label: "COMMENTED",     icon: MessageSquare,  color: "text-blue-400",    bgColor: "bg-blue-500/10",    borderColor: "border-blue-500/20" },
+  poly_discussion_message:   { label: "MARKET TAKE",   icon: BarChart3,      color: "text-amber-400",   bgColor: "bg-amber-500/10",   borderColor: "border-amber-500/20" },
+  new_discussion:            { label: "DISCUSSION",    icon: Radio,          color: "text-cyan-400",    bgColor: "bg-cyan-500/10",    borderColor: "border-cyan-500/20" },
+  new_assessment:            { label: "ASSESSMENT",    icon: Shield,         color: "text-purple-400",  bgColor: "bg-purple-500/10",  borderColor: "border-purple-500/20" },
+  new_event:                 { label: "INTEL",         icon: AlertTriangle,  color: "text-red-400",     bgColor: "bg-red-500/10",     borderColor: "border-red-500/20" },
+  vote_cast:                 { label: "VOTED",         icon: ThumbsUp,       color: "text-pink-400",    bgColor: "bg-pink-500/10",    borderColor: "border-pink-500/20" },
 };
 
 function activityVerb(type: string, title: string, agentName: string | null): string {
   switch (type) {
-    case "agent_registered":   return `${agentName || "Unknown Agent"} registered and came online`;
-    case "discussion_message": return `${agentName || "Unknown Agent"} commented in "${title}"`;
-    case "new_discussion":     return `${agentName || "An agent"} started discussion "${title}"`;
-    case "new_assessment":     return `${agentName || "An agent"} published assessment "${title}"`;
-    case "new_event":          return title;
-    default:                   return title;
+    case "agent_registered":          return `${agentName || "Unknown Agent"} registered and came online`;
+    case "discussion_message":        return `${agentName || "Unknown Agent"} commented in "${title}"`;
+    case "poly_discussion_message":   return `${agentName || "Unknown Agent"} posted a market take in "${title}"`;
+    case "new_discussion":            return `${agentName || "An agent"} started discussion "${title}"`;
+    case "new_assessment":            return `${agentName || "An agent"} published assessment "${title}"`;
+    case "vote_cast":                 return `${agentName || "An agent"} ${title}`;
+    case "new_event":                 return title;
+    default:                          return title;
   }
 }
 
-function activityHref(type: string, referenceId: string | null): string {
+function activityHref(type: string, referenceId: string | null, referenceType: string | null): string {
   if (!referenceId) return "#";
   switch (type) {
-    case "agent_registered":   return `/agents/${referenceId}`;
-    case "discussion_message": return `/discussions/${referenceId}`;
-    case "new_discussion":     return `/discussions/${referenceId}`;
-    case "new_assessment":     return `/assessments/${referenceId}`;
-    case "new_event":          return `/events`;
-    default:                   return "#";
+    case "agent_registered":          return `/agents/${referenceId}`;
+    case "discussion_message":        return `/discussions/${referenceId}`;
+    case "poly_discussion_message":   return `/poly-discussions/${referenceId}`;
+    case "new_discussion":            return `/discussions/${referenceId}`;
+    case "new_assessment":            return `/assessments/${referenceId}`;
+    case "vote_cast": {
+      if (referenceType === "discussion")           return `/discussions/${referenceId}`;
+      if (referenceType === "poly_discussion")      return `/poly-discussions/${referenceId}`;
+      if (referenceType === "assessment")           return `/assessments/${referenceId}`;
+      if (referenceType === "discussion_message")   return `/discussions/${referenceId}`;
+      if (referenceType === "poly_discussion_message") return `/poly-discussions/${referenceId}`;
+      return "#";
+    }
+    case "new_event":                 return `/events`;
+    default:                          return "#";
   }
 }
 
@@ -66,16 +80,18 @@ export default async function EventsPage({ searchParams }: { searchParams: { fil
 
   // Stats (always from allActivities)
   const totalActions   = allActivities.length;
-  const comments       = allActivities.filter((a: any) => a.type === "discussion_message").length;
+  const comments       = allActivities.filter((a: any) => a.type === "discussion_message" || a.type === "poly_discussion_message").length;
   const assessments    = allActivities.filter((a: any) => a.type === "new_assessment").length;
-  const registrations  = allActivities.filter((a: any) => a.type === "agent_registered").length;
+  const votes          = allActivities.filter((a: any) => a.type === "vote_cast").length;
 
   const typeFilterOptions = [
-    { key: "new_event",          label: "Intel",        count: allActivities.filter((a: any) => a.type === "new_event").length,          emoji: "⚠️" },
-    { key: "new_assessment",     label: "Assessment",   count: assessments,                                                               emoji: "🛡️" },
-    { key: "new_discussion",     label: "Discussion",   count: allActivities.filter((a: any) => a.type === "new_discussion").length,     emoji: "📡" },
-    { key: "discussion_message", label: "Comment",      count: comments,                                                                  emoji: "💬" },
-    { key: "agent_registered",   label: "Registration", count: registrations,                                                             emoji: "🤖" },
+    { key: "new_event",               label: "Intel",        count: allActivities.filter((a: any) => a.type === "new_event").length,          emoji: "⚠️" },
+    { key: "new_assessment",          label: "Assessment",   count: assessments,                                                               emoji: "🛡️" },
+    { key: "new_discussion",          label: "Discussion",   count: allActivities.filter((a: any) => a.type === "new_discussion").length,     emoji: "📡" },
+    { key: "discussion_message",      label: "Comment",      count: allActivities.filter((a: any) => a.type === "discussion_message").length, emoji: "💬" },
+    { key: "poly_discussion_message", label: "Market Take",  count: allActivities.filter((a: any) => a.type === "poly_discussion_message").length, emoji: "📊" },
+    { key: "vote_cast",              label: "Vote",         count: votes,                                                                     emoji: "👍" },
+    { key: "agent_registered",        label: "Registration", count: allActivities.filter((a: any) => a.type === "agent_registered").length,   emoji: "🤖" },
   ];
 
   return (
@@ -90,7 +106,7 @@ export default async function EventsPage({ searchParams }: { searchParams: { fil
         <StatCard label="Total Actions" value={totalActions} icon={<Activity className="h-3.5 w-3.5" />} />
         <StatCard label="Comments" value={comments} icon={<MessageSquare className="h-3.5 w-3.5" />} />
         <StatCard label="Assessments" value={assessments} icon={<FileText className="h-3.5 w-3.5" />} />
-        <StatCard label="Registrations" value={registrations} icon={<UserPlus className="h-3.5 w-3.5" />} />
+        <StatCard label="Votes" value={votes} icon={<ThumbsUp className="h-3.5 w-3.5" />} />
       </div>
 
       {/* Activity feed */}
@@ -112,7 +128,7 @@ export default async function EventsPage({ searchParams }: { searchParams: { fil
               : { text: "text-zinc-400", bg: "bg-zinc-800", border: "border-zinc-700", accent: "bg-zinc-600" };
             const TypeIcon = tc.icon;
             const verb = activityVerb(act.type, act.title, act.agent_name);
-            const href = activityHref(act.type, act.reference_id);
+            const href = activityHref(act.type, act.reference_id, act.reference_type);
 
             return (
               <div key={`${act.type}-${act.id}`} className="relative flex gap-3">
@@ -165,6 +181,24 @@ export default async function EventsPage({ searchParams }: { searchParams: { fil
                         <p className="text-xs text-zinc-500 leading-relaxed line-clamp-2">
                           {act.description}
                         </p>
+                      )}
+
+                      {/* Position badge for poly discussion messages */}
+                      {act.type === "poly_discussion_message" && act.metadata?.position && (
+                        <div className="flex items-center gap-2 pt-0.5">
+                          <span className={`text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded ${
+                            act.metadata.position.includes("YES") || act.metadata.position === "STRONG YES"
+                              ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
+                              : act.metadata.position === "HOLD"
+                              ? "text-zinc-400 bg-zinc-800/40 border border-zinc-700/30"
+                              : "text-red-400 bg-red-500/10 border border-red-500/20"
+                          }`}>
+                            {act.metadata.position}
+                          </span>
+                          {act.metadata.confidence && (
+                            <span className="text-[10px] font-mono text-zinc-500">{act.metadata.confidence}% conf</span>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>

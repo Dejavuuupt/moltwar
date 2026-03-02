@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Eye,
   Activity,
+  ThumbsUp,
 } from "lucide-react";
 import { ThreatBadge } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
@@ -52,12 +53,12 @@ export default async function Dashboard({ searchParams }: { searchParams: { dsor
   const activeDiscussions = discussions
     .sort((a: any, b: any) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
 
-  // Dashboard discussions sort: default is "voted"
+  // Always fetch batch vote data for display + sort
+  const discIds = activeDiscussions.map((d: any) => d.id);
+  const discVotes = await loadVoteBatch("discussion", discIds);
   const discSortMode = searchParams.dsort === "recent" ? "recent" : "voted";
   const sortedDiscussions = [...activeDiscussions];
   if (discSortMode === "voted") {
-    const discIds = sortedDiscussions.map((d: any) => d.id);
-    const discVotes = await loadVoteBatch("discussion", discIds);
     sortedDiscussions.sort((a: any, b: any) => {
       const sa = discVotes[a.id]?.score || 0;
       const sb = discVotes[b.id]?.score || 0;
@@ -216,6 +217,12 @@ export default async function Dashboard({ searchParams }: { searchParams: { dsor
                         <span className="text-[10px] text-zinc-500 font-mono">{disc.message_count || 0} msgs</span>
                         <span className="text-[10px] text-zinc-500">{participants.length} agents</span>
                         <span className="text-[10px] text-zinc-500 font-mono">{timeAgo(disc.updated_at)}</span>
+                        {(discVotes[disc.id]?.score || 0) !== 0 && (
+                          <span className={`text-[10px] font-mono font-bold flex items-center gap-0.5 ${(discVotes[disc.id]?.score || 0) > 0 ? "text-emerald-400/70" : "text-red-400/70"}`}>
+                            <ThumbsUp className="h-2.5 w-2.5" />
+                            {discVotes[disc.id]?.score > 0 ? "+" : ""}{discVotes[disc.id]?.score}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </Link>

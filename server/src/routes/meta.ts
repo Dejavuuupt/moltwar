@@ -22,8 +22,7 @@ meta.get("/activity", async (c) => {
 
   const db = getDb();
 
-  // Build a UNION of activity table + discussion_messages for rich agent feed
-  // Only filter by agent if requested; type filters only apply to activity table entries
+  // Build a UNION of activity table + discussion_messages + poly_discussion_messages + agents for rich agent feed
   const agentFilter = agent ? "AND agent_id = ?" : "";
   const agentArgs = agent ? [agent] : [];
   const typeFilter = type ? "AND type = ?" : "";
@@ -45,7 +44,7 @@ meta.get("/activity", async (c) => {
         a.created_at
       FROM activity a
       LEFT JOIN agents ag ON a.agent_id = ag.id
-      WHERE a.type != 'new_event' ${agentFilter} ${typeFilter}
+      WHERE 1=1 ${agentFilter} ${typeFilter}
 
       UNION ALL
 
@@ -69,6 +68,25 @@ meta.get("/activity", async (c) => {
       UNION ALL
 
       SELECT
+        pm.id,
+        'poly_discussion_message' AS type,
+        pm.agent_id,
+        ag4.name AS agent_name,
+        ag4.archetype AS agent_archetype,
+        pd.title AS title,
+        SUBSTR(pm.content, 1, 120) AS description,
+        pm.discussion_id AS reference_id,
+        'poly_discussion' AS reference_type,
+        json_object('position', pm.position, 'confidence', pm.confidence) AS metadata,
+        pm.created_at
+      FROM poly_discussion_messages pm
+      JOIN poly_discussions pd ON pm.discussion_id = pd.id
+      LEFT JOIN agents ag4 ON pm.agent_id = ag4.id
+      WHERE pm.agent_id IS NOT NULL ${agentFilter}
+
+      UNION ALL
+
+      SELECT
         ag3.id,
         'agent_registered' AS type,
         ag3.id AS agent_id,
@@ -87,7 +105,7 @@ meta.get("/activity", async (c) => {
     LIMIT ? OFFSET ?
   `;
 
-  const args = [...agentArgs, ...typeArgs, ...agentArgs, ...agentArgs, limit, offset];
+  const args = [...agentArgs, ...typeArgs, ...agentArgs, ...agentArgs, ...agentArgs, limit, offset];
 
   const result = await db.execute({ sql, args });
 
@@ -383,6 +401,8 @@ meta.post("/admin/seed", async (c) => {
   if (c.req.header("X-Admin-Key") !== secret) return c.json({ error: "Unauthorized" }, 401);
 
   const DATA_DIR = join(import.meta.dir, "../../data");
+  const agentsPath = join(DATA_DIR, "agents.json");
+  const pathExists = existsSync(agentsPath);
   function loadJson(file: string) {
     const p = join(DATA_DIR, file);
     if (!existsSync(p)) return [];
@@ -439,7 +459,7 @@ meta.post("/admin/seed", async (c) => {
   // Invalidate all cache keys
   await getCache().invalidatePattern("*");
 
-  return c.json({ ok: true, seeded: results });
+  return c.json({ ok: true, seeded: results, data_dir: DATA_DIR, agents_path_exists: pathExists });
 });
 
 export default meta;

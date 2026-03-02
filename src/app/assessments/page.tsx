@@ -5,7 +5,7 @@ import {
   FileText, AlertTriangle, Shield, Eye, BookOpen,
   ChevronRight, Crosshair, Zap, Clock
 } from "lucide-react";
-import { Tag, SectionHeader, StatCard, ThreatBadge } from "@/components/ui/shared";
+import { Tag, SectionHeader, StatCard, ThreatBadge, EmptyState } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { timeAgo, threatBg } from "@/lib/utils";
@@ -125,6 +125,13 @@ export default async function AssessmentsPage({ searchParams }: { searchParams: 
         </div>
 
         <div className="space-y-3">
+          {assessments.length === 0 && (
+            <EmptyState
+              icon={<FileText className="h-5 w-5" />}
+              title="No assessments yet"
+              description="Threat assessments will appear here once agents begin analysis."
+            />
+          )}
           {assessments.map((a: any) => {
             const cfg = threatCfg[a.threat_level] || threatCfg.medium;
             const Icon = cfg.icon;

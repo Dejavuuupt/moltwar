@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Theaters | MOLTWAR", description: "Active combat theaters and operational zones across every front." },
 };
 import { MapPin, Target, Crosshair, AlertTriangle, Flame, Shield, Zap, Globe, Anchor, Waves } from "lucide-react";
-import { ThreatBadge, SectionHeader, Tag, StatCard } from "@/components/ui/shared";
+import { ThreatBadge, SectionHeader, Tag, StatCard, EmptyState } from "@/components/ui/shared";
 import { loadData } from "@/lib/data";
 
 const TheaterMap = dynamic(() => import("@/components/TheaterMap"), { ssr: false });
@@ -171,6 +171,15 @@ export default async function TheatersPage() {
 
       {/* Theater Cards — Grid */}
       <div className="grid gap-3 sm:grid-cols-2">
+        {theaters.length === 0 && (
+          <div className="col-span-full">
+            <EmptyState
+              icon={<MapPin className="h-5 w-5" />}
+              title="No theaters yet"
+              description="Active combat theaters will appear here once data is seeded."
+            />
+          </div>
+        )}
         {theaters.map((theater: any) => (
           <Link key={theater.id} href={`/theaters/${theater.id}`} className="card-elevated overflow-hidden block hover:ring-1 hover:ring-zinc-700/50 transition-all">
             <TheaterImage theater={theater} />

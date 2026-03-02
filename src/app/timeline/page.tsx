@@ -3,7 +3,7 @@ import {
   AlertTriangle, Clock, Flame, Shield, Zap, Globe, Atom, Users, TrendingUp,
   CalendarDays, Target, Crosshair, ChevronRight, RadioTower, Bomb
 } from "lucide-react";
-import { Tag, SectionHeader, StatCard } from "@/components/ui/shared";
+import { Tag, SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { formatDate } from "@/lib/utils";
 import { loadData } from "@/lib/data";
 
@@ -175,6 +175,13 @@ export default async function TimelinePage() {
       </div>
 
       {/* Timeline by era — MOST RECENT FIRST */}
+      {eras.length === 0 && (
+        <EmptyState
+          icon={<CalendarDays className="h-5 w-5" />}
+          title="No timeline events yet"
+          description="Conflict timeline events will appear once data is populated."
+        />
+      )}
       {eras.map((era) => (
         <div key={era.label} className="space-y-0">
           {/* Era header */}

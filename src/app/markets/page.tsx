@@ -6,7 +6,7 @@ import {
   ArrowUpRight, ArrowDownRight, Anchor,
   Cpu, Vote, Droplets, ExternalLink, DollarSign, Shield
 } from "lucide-react";
-import { SectionHeader, StatCard } from "@/components/ui/shared";
+import { SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { loadData } from "@/lib/data";
 
@@ -214,6 +214,14 @@ export default async function MarketsPage({ searchParams }: { searchParams: { fi
         <Suspense>
           <FilterChips options={catOptions} paramName="filter" accent="emerald" allLabel="All Categories" />
         </Suspense>
+      )}
+
+      {markets.length === 0 && (
+        <EmptyState
+          icon={<BarChart3 className="h-5 w-5" />}
+          title="No prediction markets yet"
+          description="War-linked prediction markets will appear once data is seeded."
+        />
       )}
 
       {/* ── Hero Markets (top 6 by volume) ── */}

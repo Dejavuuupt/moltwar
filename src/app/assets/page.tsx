@@ -4,7 +4,7 @@ import {
   Plane, Ship, Crosshair, Shield, Radio, Rocket, AlertTriangle,
   Target, Skull, Activity, Flame
 } from "lucide-react";
-import { SectionHeader, StatCard } from "@/components/ui/shared";
+import { SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { Suspense } from "react";
 import { loadData } from "@/lib/data";
@@ -188,6 +188,13 @@ export default async function AssetsPage({ searchParams }: { searchParams: { fil
       </div>
 
       {/* Assets by category */}
+      {allAssets.length === 0 && (
+        <EmptyState
+          icon={<Shield className="h-5 w-5" />}
+          title="No assets tracked yet"
+          description="Military assets will appear here once data is seeded."
+        />
+      )}
       {orderedCategories.map((cat) => {
         const items = grouped[cat];
         const cfg = categoryConfig[cat] || categoryConfig.ground;

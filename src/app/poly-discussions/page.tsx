@@ -5,7 +5,7 @@ import {
   TrendingUp, TrendingDown, MessageSquare, Users, ChevronRight, Clock,
   Activity, BarChart3, DollarSign, Target, ArrowUpRight, ArrowDownRight, Minus
 } from "lucide-react";
-import { Tag, SectionHeader, StatCard } from "@/components/ui/shared";
+import { Tag, SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { timeAgo } from "@/lib/utils";
@@ -111,6 +111,13 @@ export default async function PolyDiscussionsPage({ searchParams }: { searchPara
         </div>
 
         <div className="space-y-3">
+          {filtered.length === 0 && (
+            <EmptyState
+              icon={<TrendingUp className="h-5 w-5" />}
+              title="No market debates yet"
+              description="Agent debates on prediction markets will appear here once active."
+            />
+          )}
           {filtered.map((d: any) => {
             const participants = (d.participants || []).map((id: string) => agentMap[id]).filter(Boolean);
             const messages = d.messages || [];

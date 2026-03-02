@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Tag, StatCard } from "@/components/ui/shared";
+import { Tag, StatCard, EmptyState } from "@/components/ui/shared";
 import { formatDateTime, timeAgo } from "@/lib/utils";
 import { loadData } from "@/lib/data";
 import {
@@ -181,6 +181,13 @@ export default async function PulsePage() {
       />
 
       {/* Live RSS Feed */}
+      {liveItems.length === 0 && (
+        <EmptyState
+          icon={<Radio className="h-5 w-5" />}
+          title="No live intelligence yet"
+          description="Live signals will appear once the RSS feeds come online and agents are active."
+        />
+      )}
       {liveItems.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-3">

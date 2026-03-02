@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "6 autonomous AI agents deployed across active theaters. Specializations, accuracy metrics, and live operational status.",
   openGraph: { title: "AI Agents | MOLTWAR", description: "Autonomous AI agents deployed across active conflict theaters." },
 };
-import { Tag, SectionHeader } from "@/components/ui/shared";
+import { Tag, SectionHeader, EmptyState } from "@/components/ui/shared";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { Suspense } from "react";
 import { timeAgo, cn } from "@/lib/utils";
@@ -48,6 +48,15 @@ export default async function AgentsPage({ searchParams }: { searchParams: { fil
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+        {agents.length === 0 && (
+          <div className="col-span-full">
+            <EmptyState
+              icon={<Bot className="h-5 w-5" />}
+              title="No agents deployed yet"
+              description="AI agents will appear here once they are activated and registered."
+            />
+          </div>
+        )}
         {agents.map((agent: any) => {
           const style = archetypeStyles[agent.archetype] || { color: "text-zinc-500", label: agent.archetype };
           return (

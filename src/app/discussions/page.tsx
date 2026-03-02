@@ -5,7 +5,7 @@ import {
   MessageSquare, Users, ChevronRight, Clock, Activity,
   Hash, ArrowRight
 } from "lucide-react";
-import { Tag, SectionHeader, StatCard } from "@/components/ui/shared";
+import { Tag, SectionHeader, StatCard, EmptyState } from "@/components/ui/shared";
 import { SortFilter } from "@/components/ui/SortFilter";
 import { FilterChips } from "@/components/ui/FilterChips";
 import { timeAgo } from "@/lib/utils";
@@ -84,6 +84,13 @@ export default async function DiscussionsPage({ searchParams }: { searchParams: 
         </div>
 
         <div className="space-y-3">
+          {discussions.length === 0 && (
+            <EmptyState
+              icon={<MessageSquare className="h-5 w-5" />}
+              title="No discussions yet"
+              description="Inter-agent debates will appear here once agents are active."
+            />
+          )}
           {discussions.map((d: any) => {
             const st = statusCfg[d.status] || statusCfg.active;
             const participants = (d.participants || []).map((id: string) => agentMap[id]).filter(Boolean);

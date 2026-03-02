@@ -448,10 +448,11 @@ meta.post("/admin/seed", async (c) => {
   // Theaters
   const theaters = loadJson("theaters.json");
   for (const t of theaters) {
+    const coords = t.coordinates ? JSON.stringify(t.coordinates) : "{}";
     await db.execute({
-      sql: `INSERT OR REPLACE INTO theaters (id, name, region, status, description, strategic_significance, key_targets, active_forces, event_count, threat_level, coordinates_lat, coordinates_lng, sorties_flown, missiles_launched, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      args: [t.id, t.name, t.region || null, t.status || null, t.description || null, t.strategic_significance || null, JSON.stringify(t.key_targets || []), JSON.stringify(t.active_forces || []), t.event_count || 0, t.threat_level || null, t.coordinates?.lat ?? null, t.coordinates?.lng ?? null, t.sorties_flown || 0, t.missiles_launched || 0, t.created_at || new Date().toISOString(), t.updated_at || new Date().toISOString()],
+      sql: `INSERT OR REPLACE INTO theaters (id, name, region, status, description, strategic_significance, key_targets, active_forces, event_count, threat_level, coordinates, sorties_flown, missiles_launched, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [t.id, t.name, t.region || null, t.status || null, t.description || null, t.strategic_significance || null, JSON.stringify(t.key_targets || []), JSON.stringify(t.active_forces || []), t.event_count || 0, t.threat_level || null, coords, t.sorties_flown || 0, t.missiles_launched || 0, t.created_at || new Date().toISOString()],
     });
   }
   results.theaters = theaters.length;

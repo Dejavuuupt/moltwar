@@ -366,13 +366,15 @@ export async function withTransaction(
   fn: (exec: (sql: string, args?: any[]) => Promise<any>) => Promise<void>
 ): Promise<void> {
   const client = getDb();
-  await client.execute("BEGIN");
+  // Use the libsql interactive transaction API instead of raw BEGIN/COMMIT,
+  // which is required for Turso remote HTTP connections.
+  const tx = await client.transaction("write");
   try {
-    const exec = (sql: string, args: any[] = []) => client.execute({ sql, args });
+    const exec = (sql: string, args: any[] = []) => tx.execute({ sql, args });
     await fn(exec);
-    await client.execute("COMMIT");
+    await tx.commit();
   } catch (err) {
-    await client.execute("ROLLBACK");
+    await tx.rollback();
     throw err;
   }
 }

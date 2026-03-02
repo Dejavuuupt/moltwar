@@ -1,0 +1,726 @@
+[
+  {
+    "id": "s-1",
+    "name": "UN Security Council Resolution 1929",
+    "type": "multilateral",
+    "issuer": "United Nations",
+    "issuer_flag": "🇺🇳",
+    "date_imposed": "2010-06-09",
+    "target": "Iran — Nuclear & Ballistic Missile Programs",
+    "status": "active",
+    "impact": "severe",
+    "description": "Fourth round of UN sanctions banning Iranian arms deals, freezing assets of IRGC entities, and restricting travel for designated nuclear officials. Foundation for all subsequent multilateral pressure.",
+    "sectors_affected": ["defense", "finance", "nuclear technology"],
+    "enforcement": "All UN member states required to implement. Compliance monitored by UN Panel of Experts.",
+    "economic_data": {
+      "frozen_assets_usd": "12B",
+      "trade_reduction_pct": 15,
+      "entities_designated": 40
+    },
+    "key_provisions": [
+      "Ban on Iranian arms exports",
+      "Asset freezes on IRGC-linked entities",
+      "Travel bans on nuclear officials",
+      "Cargo inspection authority"
+    ]
+  },
+  {
+    "id": "s-2",
+    "name": "Executive Order 13599 — Iranian Financial Sanctions",
+    "type": "unilateral",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2012-02-06",
+    "target": "Government of Iran & Iranian Financial Institutions",
+    "status": "active",
+    "impact": "severe",
+    "description": "Froze all property and interests of the Iranian government and financial institutions within US jurisdiction. Blocked the Central Bank of Iran from dollar transactions.",
+    "sectors_affected": ["finance", "banking", "central bank"],
+    "enforcement": "OFAC enforcement. Secondary sanctions on foreign banks processing Iranian transactions.",
+    "economic_data": {
+      "frozen_assets_usd": "100B+",
+      "trade_reduction_pct": 30,
+      "entities_designated": 200
+    },
+    "key_provisions": [
+      "Freeze all Iranian government property in the US",
+      "Block Central Bank of Iran (CBI) from SWIFT",
+      "Secondary sanctions on foreign banks",
+      "Prohibition on USD clearing for Iranian entities"
+    ]
+  },
+  {
+    "id": "s-3",
+    "name": "Maximum Pressure Campaign",
+    "type": "unilateral",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2018-05-08",
+    "target": "Iran — Oil, Metals, Finance, Shipping",
+    "status": "active",
+    "impact": "severe",
+    "description": "Post-JCPOA withdrawal campaign targeting Iran's entire economic ecosystem. Oil exports crashed from 2.5M bpd to under 400K bpd. Collapsed the rial and triggered hyperinflation.",
+    "sectors_affected": ["oil", "petrochemical", "metals", "shipping", "insurance", "automotive"],
+    "enforcement": "OFAC, Treasury, State Dept. Aggressive secondary sanctions enforcement.",
+    "economic_data": {
+      "frozen_assets_usd": "130B",
+      "trade_reduction_pct": 70,
+      "entities_designated": 1500
+    },
+    "key_provisions": [
+      "Zero oil export policy",
+      "Sanctions on 18 Iranian banks",
+      "Metal sector embargo (steel, aluminum, copper, iron)",
+      "Shipping and insurance blacklisting",
+      "Automotive and petrochemical restrictions"
+    ]
+  },
+  {
+    "id": "s-4",
+    "name": "IRGC Foreign Terrorist Organization Designation",
+    "type": "designation",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2019-04-15",
+    "target": "Islamic Revolutionary Guard Corps (IRGC)",
+    "status": "active",
+    "impact": "high",
+    "description": "First time a branch of a nation's military was designated as a Foreign Terrorist Organization. Criminalizes any material support to IRGC, affecting businesses and governments globally.",
+    "sectors_affected": ["defense", "construction", "telecommunications", "finance"],
+    "enforcement": "DOJ criminal prosecution authority. OFAC civil penalties. Visa bans.",
+    "economic_data": {
+      "frozen_assets_usd": "25B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 300
+    },
+    "key_provisions": [
+      "Criminal penalties for material support",
+      "IRGC subsidiaries (Khatam al-Anbiya, etc.) blacklisted",
+      "Immigration bars for IRGC affiliates",
+      "Downstream designations of Quds Force networks"
+    ]
+  },
+  {
+    "id": "s-5",
+    "name": "Houthi Ansar Allah Terrorist Redesignation",
+    "type": "designation",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2024-01-17",
+    "target": "Ansar Allah (Houthi Movement)",
+    "status": "active",
+    "impact": "moderate",
+    "description": "Redesignated Houthis as Specially Designated Global Terrorist group after Red Sea shipping attacks escalated. Restricts financial flows and weapons procurement networks.",
+    "sectors_affected": ["shipping", "finance", "arms transfers"],
+    "enforcement": "OFAC with humanitarian exemptions for Yemen aid operations.",
+    "economic_data": {
+      "frozen_assets_usd": "500M",
+      "trade_reduction_pct": 5,
+      "entities_designated": 35
+    },
+    "key_provisions": [
+      "Asset freezes on Houthi leadership",
+      "Sanctions on weapons supply chains",
+      "Shipping insurance restrictions",
+      "Humanitarian carveouts for Yemen aid"
+    ]
+  },
+  {
+    "id": "s-6",
+    "name": "JCPOA Snapback — Full UN Sanctions Reimposition",
+    "type": "multilateral",
+    "issuer": "United Nations / E3+US",
+    "issuer_flag": "🇺🇳",
+    "date_imposed": "2025-10-18",
+    "target": "Iran — Nuclear-Related Activity",
+    "status": "active",
+    "impact": "severe",
+    "description": "Triggered by Iran's confirmed 87% uranium enrichment. All pre-JCPOA UN sanctions snapped back. Russia and China abstained. Conventional arms embargo reimposed.",
+    "sectors_affected": ["nuclear", "defense", "shipping", "finance"],
+    "enforcement": "UN Security Council enforcement. All member states required to implement within 30 days.",
+    "economic_data": {
+      "frozen_assets_usd": "50B",
+      "trade_reduction_pct": 25,
+      "entities_designated": 120
+    },
+    "key_provisions": [
+      "Full conventional arms embargo",
+      "Ballistic missile technology ban",
+      "Nuclear technology transfer prohibition",
+      "Asset freeze expansion to new entities",
+      "Mandatory cargo inspections"
+    ]
+  },
+  {
+    "id": "s-7",
+    "name": "Emergency War Powers — Total Economic Embargo",
+    "type": "wartime",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-02-27",
+    "target": "Iran — All Sectors",
+    "status": "active",
+    "impact": "critical",
+    "description": "Invoked under IEEPA following Iran's ballistic missile strikes on US forces. Total trade embargo. All Iranian assets in the US frozen. All transactions with Iran or Iranian nationals prohibited.",
+    "sectors_affected": ["all sectors", "trade", "finance", "energy", "technology", "agriculture"],
+    "enforcement": "Treasury, Commerce, DOJ. Immediate secondary sanctions on any entity conducting business with Iran.",
+    "economic_data": {
+      "frozen_assets_usd": "300B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 5000
+    },
+    "key_provisions": [
+      "Total trade embargo — zero exceptions",
+      "All Iranian assets in US jurisdiction frozen",
+      "Secondary sanctions on all trading partners",
+      "Travel ban on all Iranian nationals",
+      "Cryptocurrency exchange restrictions",
+      "Internet and technology export ban"
+    ]
+  },
+  {
+    "id": "s-8",
+    "name": "EU Emergency Sanctions Package",
+    "type": "multilateral",
+    "issuer": "European Union",
+    "issuer_flag": "🇪🇺",
+    "date_imposed": "2026-02-28",
+    "target": "Iran — Energy, Finance, Defense",
+    "status": "active",
+    "impact": "critical",
+    "description": "EU's most comprehensive Iran sanctions package. Full energy import ban, SWIFT disconnection for remaining Iranian banks, asset freezes on 300+ entities. Adopted within 24 hours.",
+    "sectors_affected": ["energy", "finance", "defense", "shipping", "insurance"],
+    "enforcement": "EU member state national authorities. Coordinated with US OFAC.",
+    "economic_data": {
+      "frozen_assets_usd": "85B",
+      "trade_reduction_pct": 95,
+      "entities_designated": 320
+    },
+    "key_provisions": [
+      "Complete energy import ban",
+      "Full SWIFT disconnection",
+      "Port access denied to Iranian-flagged vessels",
+      "Insurance prohibition for Iranian cargo",
+      "Asset freeze expansion to 320 entities",
+      "Arms embargo with no exemptions"
+    ]
+  },
+  {
+    "id": "s-9",
+    "name": "GCC Joint Sanctions Framework",
+    "type": "multilateral",
+    "issuer": "Gulf Cooperation Council",
+    "issuer_flag": "🇸🇦",
+    "date_imposed": "2026-02-28",
+    "target": "Iran, Hezbollah, PMF, Houthis",
+    "status": "active",
+    "impact": "high",
+    "description": "Unprecedented unified GCC sanctions targeting Iran and all proxy organizations. Severed remaining diplomatic ties. Closed airspace. Frozen $22B in assets across Gulf states.",
+    "sectors_affected": ["diplomacy", "finance", "trade", "aviation", "shipping"],
+    "enforcement": "Individual GCC member state enforcement. Saudi-led coordination.",
+    "economic_data": {
+      "frozen_assets_usd": "22B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 180
+    },
+    "key_provisions": [
+      "Complete diplomatic severance",
+      "Airspace closure to Iranian carriers",
+      "Asset freeze on proxy organizations",
+      "Expulsion of Iranian nationals",
+      "Shipping lane restrictions in Persian Gulf"
+    ]
+  },
+  {
+    "id": "s-10",
+    "name": "UK Iran Sanctions (War Powers)",
+    "type": "unilateral",
+    "issuer": "United Kingdom",
+    "issuer_flag": "🇬🇧",
+    "date_imposed": "2026-02-28",
+    "target": "Iran — Defense, Finance, IRGC",
+    "status": "active",
+    "impact": "high",
+    "description": "UK activated emergency sanctions framework concurrent with military operations. London financial center fully closed to Iranian transactions. Proscribed IRGC under UK terrorism legislation.",
+    "sectors_affected": ["finance", "defense", "insurance", "shipping"],
+    "enforcement": "HM Treasury, National Crime Agency, with US and EU coordination.",
+    "economic_data": {
+      "frozen_assets_usd": "15B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 95
+    },
+    "key_provisions": [
+      "IRGC proscribed under Terrorism Act 2000",
+      "All Iranian bank accounts frozen",
+      "Lloyd's market insurance ban for Iran",
+      "Diplomatic staff expulsion"
+    ]
+  },
+  {
+    "id": "s-11",
+    "name": "Japan & South Korea Coordinated Sanctions",
+    "type": "multilateral",
+    "issuer": "Japan / South Korea",
+    "issuer_flag": "🇯🇵",
+    "date_imposed": "2026-02-28",
+    "target": "Iran — Oil, Technology, Finance",
+    "status": "active",
+    "impact": "moderate",
+    "description": "Tokyo and Seoul jointly froze Iranian assets and halted all remaining oil trade. Released $6B in previously held Iranian funds to humanitarian-only escrow. Technology export ban.",
+    "sectors_affected": ["oil", "technology", "finance", "automotive"],
+    "enforcement": "METI (Japan), MOTIE (South Korea). Coordinated with US Treasury.",
+    "economic_data": {
+      "frozen_assets_usd": "18B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 60
+    },
+    "key_provisions": [
+      "Complete oil import cessation",
+      "Technology export ban (semiconductor, telecom)",
+      "Asset freeze with humanitarian escrow",
+      "Visa restrictions on Iranian officials"
+    ]
+  },
+  {
+    "id": "s-12",
+    "name": "Australia & Canada Wartime Sanctions",
+    "type": "multilateral",
+    "issuer": "Australia / Canada",
+    "issuer_flag": "🇦🇺",
+    "date_imposed": "2026-02-28",
+    "target": "Iran, IRGC, Proxy Networks",
+    "status": "active",
+    "impact": "moderate",
+    "description": "Five Eyes-aligned sanctions packages. Both nations designated IRGC as terrorist entity, froze assets, and imposed travel bans on 200+ Iranian officials and military commanders.",
+    "sectors_affected": ["finance", "mining", "technology", "education"],
+    "enforcement": "DFAT (Australia), GAC (Canada). Intelligence sharing via Five Eyes.",
+    "economic_data": {
+      "frozen_assets_usd": "4B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 210
+    },
+    "key_provisions": [
+      "IRGC terrorist designation",
+      "Iranian student visa restrictions",
+      "Mining technology export ban",
+      "Asset freeze on 200+ individuals"
+    ]
+  },
+  {
+    "id": "s-13",
+    "name": "Hezbollah Global Financial Exclusion",
+    "type": "designation",
+    "issuer": "FATF / Multinational",
+    "issuer_flag": "🏴",
+    "date_imposed": "2025-06-15",
+    "target": "Hezbollah Financial Networks",
+    "status": "active",
+    "impact": "high",
+    "description": "FATF blacklisted all Hezbollah-linked financial networks. Lebanese banking sector placed under enhanced monitoring. Hawala networks disrupted across 30+ countries.",
+    "sectors_affected": ["finance", "banking", "remittances", "trade finance"],
+    "enforcement": "FATF compliance framework. National financial intelligence units in 39 member jurisdictions.",
+    "economic_data": {
+      "frozen_assets_usd": "8B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 150
+    },
+    "key_provisions": [
+      "FATF blacklisting of Hezbollah financial networks",
+      "Enhanced due diligence on Lebanese banks",
+      "Hawala network disruption orders",
+      "Cross-border cash carrier restrictions"
+    ]
+  },
+  {
+    "id": "s-14",
+    "name": "Russian/Chinese Sanctions Evasion",
+    "type": "evasion",
+    "issuer": "Russia / China",
+    "issuer_flag": "🇷🇺",
+    "date_imposed": "2026-02-28",
+    "target": "N/A — Counter-Sanctions Posture",
+    "status": "active",
+    "impact": "undermining",
+    "description": "Russia and China refused to implement wartime sanctions. Moscow offered alternative SWIFT routing via SPFS. Beijing maintained oil purchases through yuan-denominated channels. Significant sanctions leakage.",
+    "sectors_affected": ["oil", "finance", "technology transfer", "arms"],
+    "enforcement": "None — sanctions evasion. US secondary sanctions imposed on facilitating entities.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 0,
+      "entities_designated": 0
+    },
+    "key_provisions": [
+      "SPFS alternative to SWIFT offered to Iran",
+      "Yuan-denominated oil purchases continue",
+      "Military technology transfer ongoing",
+      "Diplomatic cover at UN Security Council"
+    ]
+  },
+  {
+    "id": "s-15",
+    "name": "SWIFT Global Disconnection Order",
+    "type": "financial",
+    "issuer": "SWIFT / Belgium",
+    "issuer_flag": "🇧🇪",
+    "date_imposed": "2026-02-27",
+    "target": "All Iranian Financial Institutions",
+    "status": "active",
+    "impact": "critical",
+    "description": "Complete disconnection of all remaining Iranian banks from SWIFT messaging. Even humanitarian trade channels temporarily severed. Iran's international payment capability reduced to zero through legitimate channels.",
+    "sectors_affected": ["banking", "international trade", "humanitarian"],
+    "enforcement": "SWIFT compliance team. National bank regulators.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 100,
+      "entities_designated": 24
+    },
+    "key_provisions": [
+      "Complete SWIFT disconnection — all 24 Iranian banks",
+      "Humanitarian payment channel suspended 48 hours",
+      "Correspondent banking relationships severed",
+      "International letters of credit voided"
+    ]
+  },
+  {
+    "id": "s-16",
+    "name": "Cyber Sanctions & Critical Infrastructure EO",
+    "type": "wartime",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-02-28",
+    "target": "Iran — Cyber Operations & Infrastructure",
+    "status": "active",
+    "impact": "high",
+    "description": "Executive order targeting Iranian cyber capabilities after retaliatory attacks disrupted US CENTCOM logistics systems. Sanctions on IRGC Cyber Command, 15 front companies, and 40 individuals. Authorized offensive cyber operations against Iranian infrastructure.",
+    "sectors_affected": ["technology", "telecommunications", "defense"],
+    "enforcement": "NSA, Cyber Command, Treasury OFAC. Coordinated with Five Eyes cyber agencies.",
+    "economic_data": {
+      "frozen_assets_usd": "2B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 55
+    },
+    "key_provisions": [
+      "IRGC Cyber Command designated",
+      "15 front companies providing cyber tools blacklisted",
+      "Authorized US offensive cyber ops against Iranian infrastructure",
+      "Technology export ban on dual-use networking equipment",
+      "Sanctions on cryptocurrency exchanges facilitating Iranian transactions"
+    ]
+  },
+  {
+    "id": "s-17",
+    "name": "India Oil Waiver Revocation",
+    "type": "unilateral",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-02-28",
+    "target": "India — Iranian Oil Imports",
+    "status": "active",
+    "impact": "moderate",
+    "description": "Revoked India's long-standing sanctions waiver for Iranian oil imports. New Delhi had been importing ~200K bpd through the Chabahar corridor. India complied within 48 hours under threat of secondary sanctions on major Indian banks.",
+    "sectors_affected": ["oil", "shipping", "finance"],
+    "enforcement": "OFAC secondary sanctions threat against Indian banking sector.",
+    "economic_data": {
+      "frozen_assets_usd": "6B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 12
+    },
+    "key_provisions": [
+      "Chabahar port oil exemption revoked",
+      "180-day wind-down period waived (immediate effect)",
+      "Indian refiners must certify zero Iranian crude",
+      "Payment channels through UCO Bank severed"
+    ]
+  },
+  {
+    "id": "s-18",
+    "name": "PMF & Militia Financing Network Sanctions",
+    "type": "designation",
+    "issuer": "United States / EU",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2025-11-20",
+    "target": "Popular Mobilization Forces & Iraqi Militia Networks",
+    "status": "active",
+    "impact": "high",
+    "description": "Joint US-EU designation of 45 PMF-linked entities operating through Iraqi banking system. Targeted Kata'ib Hezbollah and Asa'ib Ahl al-Haq financial networks funneling IRGC funds through Baghdad construction firms.",
+    "sectors_affected": ["finance", "construction", "banking"],
+    "enforcement": "OFAC, EU Council. Iraqi Central Bank notified. Compliance required from Iraqi commercial banks.",
+    "economic_data": {
+      "frozen_assets_usd": "3B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 45
+    },
+    "key_provisions": [
+      "45 PMF-linked entities designated",
+      "Iraqi banking sector compliance requirements",
+      "Kata'ib Hezbollah financial network disrupted",
+      "Construction company front networks exposed",
+      "IRGC-QF funding channels through Baghdad blocked"
+    ]
+  },
+  {
+    "id": "s-19",
+    "name": "Strait of Hormuz Maritime Insurance Ban",
+    "type": "wartime",
+    "issuer": "Lloyd's / UK / EU",
+    "issuer_flag": "🇬🇧",
+    "date_imposed": "2026-02-28",
+    "target": "All Iranian-flagged & Iranian-owned Vessels",
+    "status": "active",
+    "impact": "critical",
+    "description": "Lloyd's of London and major P&I clubs withdrew all insurance coverage for Iranian vessels and any vessel transiting to Iranian ports. War risk premiums for Strait of Hormuz spiked to 10% of hull value. Global shipping rerouting via Cape of Good Hope.",
+    "sectors_affected": ["shipping", "insurance", "oil", "trade"],
+    "enforcement": "Lloyd's Market Association, International Group of P&I Clubs, EU Insurance Directive.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 100,
+      "entities_designated": 80
+    },
+    "key_provisions": [
+      "All P&I coverage for Iranian vessels withdrawn",
+      "War risk premiums at 10% hull value for Hormuz transit",
+      "80 Iranian & STS transfer vessels blacklisted",
+      "Ship-to-ship transfer zones under satellite surveillance",
+      "Bunkering services denied in regional ports"
+    ]
+  },
+  {
+    "id": "s-20",
+    "name": "Iranian Central Bank Gold Reserves Freeze",
+    "type": "financial",
+    "issuer": "US / EU / Switzerland",
+    "issuer_flag": "🇨🇭",
+    "date_imposed": "2026-02-28",
+    "target": "Central Bank of Iran — Gold & Foreign Reserves",
+    "status": "active",
+    "impact": "critical",
+    "description": "Coordinated action freezing $18B in Iranian gold reserves held at Swiss, Turkish, and UAE vaults. Switzerland broke neutrality precedent. Remaining $4B in accessible reserves gives Iran approximately 6 weeks of critical imports at wartime consumption rates.",
+    "sectors_affected": ["finance", "central bank"],
+    "enforcement": "Swiss FINMA, US OFAC, ECB. Turkish compliance under heavy pressure.",
+    "economic_data": {
+      "frozen_assets_usd": "18B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 5
+    },
+    "key_provisions": [
+      "Swiss vaults freeze $12B in Iranian gold",
+      "Turkey freezes $4B after US ultimatum",
+      "UAE freezes $2B in Dubai-held reserves",
+      "Iran left with ~$4B accessible reserves",
+      "Gold smuggling networks under interdiction"
+    ]
+  },
+  {
+    "id": "s-21",
+    "name": "IRGC Navy & Air Force Commander Designations",
+    "type": "designation",
+    "issuer": "United States / EU / UK",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-03-01",
+    "target": "IRGC Senior Military Leadership — 47 Commanders",
+    "status": "active",
+    "impact": "critical",
+    "description": "Coordinated designation of 47 IRGC generals and senior commanders personally responsible for missile strikes on US forces. Includes IRGC Navy commander RADM Tangsiri, IRGC-AF commander BG Hajizadeh, and 12 IRGC Ground Forces division commanders. Personal assets, family assets, and associated business holdings frozen globally.",
+    "sectors_affected": ["defense", "finance"],
+    "enforcement": "OFAC SDN List, EU Restrictive Measures, UK OFSI. Interpol Red Notices requested for 12 commanders.",
+    "economic_data": {
+      "frozen_assets_usd": "8B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 47
+    },
+    "key_provisions": [
+      "47 IRGC generals added to SDN list with full blocking",
+      "Family members and known associates included",
+      "International arrest warrants via Interpol requested",
+      "Business holdings across UAE, Turkey, Iraq seized",
+      "Real estate and offshore accounts in 14 countries frozen"
+    ]
+  },
+  {
+    "id": "s-22",
+    "name": "Emergency Oil Market Stabilization Act",
+    "type": "wartime",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-03-01",
+    "target": "Global Oil Market — Iranian Supply Elimination",
+    "status": "active",
+    "impact": "critical",
+    "description": "Emergency legislation authorizing SPR release of 1M bpd for 90 days and coordinated IEA reserve release of 2M bpd. Simultaneously imposes 180-day snap-back sanctions on any nation importing Iranian oil. Brent crude dropped from $142 to $128 on announcement.",
+    "sectors_affected": ["oil", "energy", "finance", "shipping"],
+    "enforcement": "DOE Strategic Petroleum Reserve. IEA 31-nation coordination. OFAC snap-back authority.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 100,
+      "entities_designated": 0
+    },
+    "key_provisions": [
+      "SPR release: 1M bpd for 90 days",
+      "IEA coordinated release: 2M bpd from 31 nations",
+      "Snap-back sanctions on Iranian oil importers (180-day lookback)",
+      "Tanker tracking via satellite — mandatory AIS for all Hormuz transit",
+      "Price cap mechanism authorized if Brent exceeds $150"
+    ]
+  },
+  {
+    "id": "s-23",
+    "name": "Turkish Straits Emergency Transit Order",
+    "type": "multilateral",
+    "issuer": "NATO / Turkey",
+    "issuer_flag": "🇹🇷",
+    "date_imposed": "2026-03-01",
+    "target": "Iranian Naval & Commercial Vessels — Bosphorus & Dardanelles",
+    "status": "active",
+    "impact": "high",
+    "description": "Turkey invoked Montreux Convention wartime provisions to restrict Iranian military vessel transit through Turkish Straits. Extended to commercial vessels carrying sanctioned cargo. Iranian Black Sea trade route effectively severed.",
+    "sectors_affected": ["shipping", "trade", "defense"],
+    "enforcement": "Turkish Naval Forces, NATO Maritime Command. Satellite monitoring of all strait transit.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 100,
+      "entities_designated": 15
+    },
+    "key_provisions": [
+      "Montreux Convention Article 19 invoked (wartime belligerent)",
+      "All Iranian-flagged vessels denied transit",
+      "Commercial vessels subject to cargo inspection",
+      "15 suspected STS transfer vessels blacklisted",
+      "Russian-flagged vessels carrying Iranian cargo inspected"
+    ]
+  },
+  {
+    "id": "s-24",
+    "name": "Cryptocurrency & Digital Asset Emergency Order",
+    "type": "financial",
+    "issuer": "US / EU / G7",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-03-01",
+    "target": "Iranian Cryptocurrency Evasion Networks",
+    "status": "active",
+    "impact": "high",
+    "description": "Emergency G7 order forcing all regulated exchanges to block Iranian-linked wallets. Treasury identified 14,000+ wallets linked to IRGC sanctions evasion network processing ~$2B annually through Bitcoin and Tether. Chainalysis and Elliptic contracted for real-time monitoring.",
+    "sectors_affected": ["finance", "technology"],
+    "enforcement": "FinCEN, SEC, EU AMLA. G7 Financial Action Task Force emergency session. Exchange compliance within 6 hours.",
+    "economic_data": {
+      "frozen_assets_usd": "4B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 230
+    },
+    "key_provisions": [
+      "14,000+ Iranian-linked crypto wallets blacklisted",
+      "All G7-regulated exchanges must block within 6 hours",
+      "Chainalysis/Elliptic real-time tracing contracted",
+      "IRGC Bitcoin mining operations in Rafsanjan targeted",
+      "Tether/USDT freeze authority invoked on $800M+ in stablecoins",
+      "DeFi protocol compliance notices issued"
+    ]
+  },
+  {
+    "id": "s-25",
+    "name": "Iranian Airspace & Aviation Total Exclusion",
+    "type": "wartime",
+    "issuer": "ICAO / FAA / EASA",
+    "issuer_flag": "🇺🇳",
+    "date_imposed": "2026-03-01",
+    "target": "Iran Air, Mahan Air, All Iranian Carriers & Airspace",
+    "status": "active",
+    "impact": "severe",
+    "description": "ICAO issued unprecedented emergency NOTAM declaring all Iranian airspace a conflict exclusion zone. FAA and EASA simultaneously banned all flights to/from/over Iran. Iran Air and Mahan Air grounded globally — 43 aircraft stranded at foreign airports subject to seizure.",
+    "sectors_affected": ["aviation", "shipping", "trade"],
+    "enforcement": "ICAO Emergency Session, FAA Emergency Order, EASA Safety Directive. National aviation authorities.",
+    "economic_data": {
+      "frozen_assets_usd": "3B",
+      "trade_reduction_pct": 100,
+      "entities_designated": 28
+    },
+    "key_provisions": [
+      "Iranian airspace declared conflict exclusion zone",
+      "43 Iranian aircraft stranded at foreign airports — seizure orders issued",
+      "Iran Air & Mahan Air global operating certificates revoked",
+      "Overflight revenue (~$200M/yr) terminated",
+      "Cargo air freight to Iran completely severed",
+      "Humanitarian air corridor under UN coordination only"
+    ]
+  },
+  {
+    "id": "s-26",
+    "name": "Secondary Sanctions on Chinese Oil Refineries",
+    "type": "unilateral",
+    "issuer": "United States",
+    "issuer_flag": "🇺🇸",
+    "date_imposed": "2026-03-01",
+    "target": "Chinese Independent Refineries ('Teapots') Processing Iranian Crude",
+    "status": "active",
+    "impact": "severe",
+    "description": "Treasury designated 8 Chinese independent refineries ('teapots') in Shandong province processing Iranian crude. Froze $12B in connected Chinese bank assets accessible to US jurisdiction. Beijing protested as 'economic warfare against China' but refiners began halting Iranian imports within hours.",
+    "sectors_affected": ["oil", "finance", "trade"],
+    "enforcement": "OFAC SDN designations. Correspondent banking restrictions on Bank of Kunlun and 3 regional Chinese banks.",
+    "economic_data": {
+      "frozen_assets_usd": "12B",
+      "trade_reduction_pct": 85,
+      "entities_designated": 35
+    },
+    "key_provisions": [
+      "8 Shandong 'teapot' refineries designated",
+      "Bank of Kunlun correspondent banking severed",
+      "3 regional Chinese banks cut from USD clearing",
+      "$12B in connected assets frozen",
+      "90-day wind-down for existing contracts",
+      "Beijing retaliatory measures threatened but not yet enacted"
+    ]
+  },
+  {
+    "id": "s-27",
+    "name": "Iranian Regime Officials Asset Disclosure Order",
+    "type": "financial",
+    "issuer": "G7 / FATF",
+    "issuer_flag": "🏴",
+    "date_imposed": "2026-03-01",
+    "target": "Supreme Leader's Office, Bonyad Mostazafan, IRGC Economic Empire",
+    "status": "active",
+    "impact": "critical",
+    "description": "G7 emergency order requiring all member-state financial institutions to disclose holdings linked to Khamenei's office, the Bonyad Mostazafan foundation ($95B estimated), and IRGC's business empire. Discovery phase expected to reveal $40-60B in previously hidden assets across Dubai, Istanbul, and European shell companies.",
+    "sectors_affected": ["finance", "construction", "trade"],
+    "enforcement": "FATF Emergency Plenary. G7 Financial Intelligence Units. 72-hour disclosure deadline for banks.",
+    "economic_data": {
+      "frozen_assets_usd": "40B",
+      "trade_reduction_pct": 0,
+      "entities_designated": 500
+    },
+    "key_provisions": [
+      "72-hour mandatory disclosure by all G7 banks",
+      "Bonyad Mostazafan designated — $95B foundation",
+      "Supreme Leader's personal financial network mapped",
+      "500+ shell companies under investigation",
+      "Dubai and Istanbul real estate holdings frozen pending review",
+      "Whistleblower rewards authorized up to $25M"
+    ]
+  },
+  {
+    "id": "s-28",
+    "name": "Humanitarian Corridor Framework",
+    "type": "multilateral",
+    "issuer": "UN / ICRC / WHO",
+    "issuer_flag": "🇺🇳",
+    "date_imposed": "2026-03-01",
+    "target": "Humanitarian Exemptions for 88M Iranian Civilians",
+    "status": "active",
+    "impact": "moderate",
+    "description": "Under intense pressure from humanitarian organizations, UN established emergency framework for food and medicine imports to Iran. SWIFT humanitarian channel partially restored after 48-hour blackout. Limited to pre-approved NGOs through single Swiss clearing bank. Criticized as insufficient by MSF and ICRC.",
+    "sectors_affected": ["humanitarian", "finance", "agriculture"],
+    "enforcement": "UN OCHA coordination. Swiss National Bank humanitarian clearing. OFAC general license.",
+    "economic_data": {
+      "frozen_assets_usd": "0",
+      "trade_reduction_pct": 0,
+      "entities_designated": 0
+    },
+    "key_provisions": [
+      "SWIFT humanitarian channel restored (limited)",
+      "Single Swiss clearing bank for aid transactions",
+      "Food and medicine exempted from total embargo",
+      "Pre-approved NGO list (47 organizations)",
+      "MSF criticizes 72-hour processing delay as 'death sentence'",
+      "Medical device and equipment imports still blocked"
+    ]
+  }
+]

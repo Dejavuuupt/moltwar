@@ -1,0 +1,392 @@
+[
+  {
+    "id": "tl-001",
+    "date": "1979-02-11",
+    "title": "Iranian Revolution",
+    "description": "Shah Mohammad Reza Pahlavi overthrown; Islamic Republic established under Ayatollah Khomeini. US embassy hostage crisis begins months later, severing US-Iran relations.",
+    "category": "political",
+    "significance": "foundational",
+    "actors": ["iran", "united-states"],
+    "tags": ["revolution", "hostage-crisis", "khomeini"]
+  },
+  {
+    "id": "tl-002",
+    "date": "1983-10-23",
+    "title": "Beirut Barracks Bombing",
+    "description": "Hezbollah truck bomb kills 241 US Marines and 58 French paratroopers at their barracks in Beirut. First major Iran-backed attack on US forces.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["hezbollah", "united-states"],
+    "tags": ["hezbollah", "beirut", "terrorism"]
+  },
+  {
+    "id": "tl-003",
+    "date": "1988-07-03",
+    "title": "USS Vincennes Shoots Down Iran Air Flight 655",
+    "description": "US Navy cruiser USS Vincennes mistakes Iranian civilian airliner for hostile F-14 and destroys it, killing all 290 aboard. Deepens decades of hostility.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["united-states", "iran"],
+    "tags": ["iran-air-655", "tragedy", "persian-gulf"]
+  },
+  {
+    "id": "tl-004",
+    "date": "2002-08-14",
+    "title": "Iranian Nuclear Program Exposed",
+    "description": "Iranian dissident group reveals secret uranium enrichment facility at Natanz and heavy water plant at Arak. Triggers international crisis over Iran's nuclear ambitions.",
+    "category": "intelligence",
+    "significance": "foundational",
+    "actors": ["iran"],
+    "tags": ["nuclear", "natanz", "enrichment"]
+  },
+  {
+    "id": "tl-005",
+    "date": "2003-03-20",
+    "title": "US Invasion of Iraq",
+    "description": "US-led coalition invades Iraq, toppling Saddam Hussein. Power vacuum enables Iranian influence via Shia militias. Iran becomes dominant external actor in Iraq.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["united-states", "iran"],
+    "tags": ["iraq-war", "invasion", "regime-change"]
+  },
+  {
+    "id": "tl-006",
+    "date": "2006-07-12",
+    "title": "2006 Lebanon War (July War)",
+    "description": "Hezbollah captures two IDF soldiers, triggering 34-day war with Israel. Demonstrates Hezbollah's Iranian-supplied arsenal with 4,000 rockets fired into Israel.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["hezbollah", "israel"],
+    "tags": ["lebanon-war", "hezbollah", "rockets"]
+  },
+  {
+    "id": "tl-007",
+    "date": "2010-06-01",
+    "title": "Stuxnet Cyber Weapon Discovered",
+    "description": "US-Israeli Stuxnet worm discovered in Iranian nuclear centrifuges at Natanz. First known cyber weapon to cause physical destruction. Destroyed ~1,000 centrifuges.",
+    "category": "cyber",
+    "significance": "foundational",
+    "actors": ["united-states", "israel", "iran"],
+    "tags": ["stuxnet", "cyber-warfare", "natanz"]
+  },
+  {
+    "id": "tl-008",
+    "date": "2015-07-14",
+    "title": "JCPOA Nuclear Deal Signed",
+    "description": "Iran agrees to limit enrichment to 3.67% and reduce centrifuges in exchange for sanctions relief. Brief diplomatic thaw.",
+    "category": "diplomatic",
+    "significance": "foundational",
+    "actors": ["iran", "united-states"],
+    "tags": ["jcpoa", "nuclear-deal", "diplomacy"]
+  },
+  {
+    "id": "tl-009",
+    "date": "2018-05-08",
+    "title": "US Withdraws from JCPOA",
+    "description": "US unilaterally withdraws from Iran nuclear deal and reimposes 'maximum pressure' sanctions. Iran begins incrementally breaching JCPOA limits.",
+    "category": "diplomatic",
+    "significance": "foundational",
+    "actors": ["united-states", "iran"],
+    "tags": ["jcpoa-withdrawal", "maximum-pressure", "sanctions"]
+  },
+  {
+    "id": "tl-010",
+    "date": "2019-06-20",
+    "title": "Iran Shoots Down US Drone",
+    "description": "IRGC shoots down US Navy RQ-4A Global Hawk over Strait of Hormuz. Trump calls off retaliatory strike 10 minutes before launch. Near-war moment.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["irgc", "united-states"],
+    "tags": ["drone-shootdown", "near-war", "hormuz"]
+  },
+  {
+    "id": "tl-011",
+    "date": "2019-09-14",
+    "title": "Attack on Saudi Aramco (Abqaiq-Khurais)",
+    "description": "Iranian drones and cruise missiles strike Saudi Abqaiq oil processing, temporarily cutting Saudi production by 50%. Houthis claim responsibility; US blames Iran.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["iran", "houthis", "saudi-arabia"],
+    "tags": ["aramco", "oil-attack", "drones"]
+  },
+  {
+    "id": "tl-012",
+    "date": "2020-01-03",
+    "title": "US Assassinates Qasem Soleimani",
+    "description": "US drone strike at Baghdad Airport kills IRGC Quds Force Commander Qasem Soleimani and PMF deputy commander Abu Mahdi al-Muhandis.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["united-states", "quds-force", "pmf"],
+    "tags": ["soleimani", "assassination", "baghdad"]
+  },
+  {
+    "id": "tl-013",
+    "date": "2020-01-08",
+    "title": "Iran Retaliates — Strikes Ain al-Asad Air Base",
+    "description": "Iran launches 16 ballistic missiles at Ain al-Asad Air Base. No US deaths but 110+ TBI casualties. Closest to full-scale war until 2026.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["irgc", "united-states"],
+    "tags": ["retaliation", "ain-al-asad", "near-war"]
+  },
+  {
+    "id": "tl-014",
+    "date": "2023-10-07",
+    "title": "Hamas October 7th Attack — Regional Escalation Begins",
+    "description": "Hamas attack on Israel triggers massive Israeli military operation in Gaza. Iran-backed proxies open multiple fronts against Israel and US forces.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["israel", "hezbollah", "houthis", "pmf", "iran"],
+    "tags": ["october-7", "gaza", "multi-front", "escalation"]
+  },
+  {
+    "id": "tl-015",
+    "date": "2023-11-19",
+    "title": "Houthis Begin Red Sea Anti-Shipping Campaign",
+    "description": "Houthis seize Galaxy Leader and begin attacks on commercial vessels. Major shipping reroutes via Cape of Good Hope; global trade severely disrupted.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["houthis", "us-fifth-fleet"],
+    "tags": ["red-sea-crisis", "shipping", "houthi"]
+  },
+  {
+    "id": "tl-016",
+    "date": "2024-01-12",
+    "title": "US-UK Launch Strikes on Yemen",
+    "description": "US and UK conduct air and missile strikes on Houthi military targets across Yemen in response to Red Sea shipping attacks.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["united-states", "houthis"],
+    "tags": ["yemen-strikes", "prosperity-guardian"]
+  },
+  {
+    "id": "tl-017",
+    "date": "2024-04-13",
+    "title": "Iran Launches Direct Attack on Israel",
+    "description": "Iran fires 300+ missiles and drones directly at Israel — first ever direct state-to-state strike. Most intercepted by multinational defense effort.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["iran", "israel", "united-states"],
+    "tags": ["iran-israel-direct", "mass-strike", "unprecedented"]
+  },
+  {
+    "id": "tl-018",
+    "date": "2024-10-01",
+    "title": "Iran's Second Direct Missile Barrage on Israel",
+    "description": "Iran launches ~180 ballistic missiles at Israel in response to assassinations of Hezbollah and Hamas leaders. Several missiles penetrate defenses.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["iran", "israel"],
+    "tags": ["second-direct-strike", "ballistic-missiles"]
+  },
+  {
+    "id": "tl-019",
+    "date": "2025-03-15",
+    "title": "IAEA Reports: Iran Enriching to 83.7% — Weapons-Grade Threshold Crossed",
+    "description": "IAEA inspectors confirm Iran enriching uranium to 83.7% at Fordow — above the 90% weapons-grade threshold for practical purposes. Breakout time estimated at 2-3 weeks. US and Israel issue joint warning. UN Security Council emergency session.",
+    "category": "nuclear",
+    "significance": "foundational",
+    "actors": ["iran", "united-states", "israel"],
+    "tags": ["nuclear-breakout", "weapons-grade", "iaea", "enrichment"]
+  },
+  {
+    "id": "tl-020",
+    "date": "2025-06-01",
+    "title": "US Deploys Second Carrier Strike Group to Gulf",
+    "description": "Pentagon deploys USS Gerald R. Ford CSG alongside USS Eisenhower to the Persian Gulf — first dual-carrier presence since 2012. Force posture shift signals preparation for potential conflict. 12 additional F-22 Raptors deployed to Al Udeid.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["united-states", "us-fifth-fleet"],
+    "tags": ["force-buildup", "carrier-deployment", "deterrence"]
+  },
+  {
+    "id": "tl-021",
+    "date": "2025-07-22",
+    "title": "Iran Expels All IAEA Inspectors",
+    "description": "Iran announces termination of all cooperation with IAEA and expels remaining inspectors from Natanz, Fordow, and Isfahan sites. International community loses all visibility into Iran's nuclear program. 'Going dark' triggers emergency consultations among Western capitals.",
+    "category": "nuclear",
+    "significance": "foundational",
+    "actors": ["iran"],
+    "tags": ["iaea-expulsion", "nuclear", "going-dark", "inspectors"]
+  },
+  {
+    "id": "tl-022",
+    "date": "2025-09-10",
+    "title": "PMF Attacks Intensify: 3 US Facilities Hit in One Week",
+    "description": "Iran-backed PMF ramp up drone and rocket attacks on US positions in Iraq and Syria. Three facilities hit in one week — Tower 22, Harir, and Green Village. US retaliates with strikes on PMF weapons depots. Pentagon warns of 'unsustainable escalation.'",
+    "category": "military",
+    "significance": "major",
+    "actors": ["pmf", "us-centcom"],
+    "tags": ["pmf-escalation", "drone-attacks", "iraq"]
+  },
+  {
+    "id": "tl-023",
+    "date": "2025-11-14",
+    "title": "US Snapback Sanctions: Total Economic Embargo on Iran",
+    "description": "US invokes JCPOA snapback mechanism and imposes comprehensive economic embargo on Iran. All oil exports sanctioned. Secondary sanctions threaten any nation purchasing Iranian crude. China and India reduce purchases by 60%. Iranian Rial crashes to record lows.",
+    "category": "economic",
+    "significance": "major",
+    "actors": ["united-states", "iran"],
+    "tags": ["snapback-sanctions", "embargo", "economic-warfare"]
+  },
+  {
+    "id": "tl-024",
+    "date": "2025-12-05",
+    "title": "Hezbollah Fires Precision Missiles at Israeli Military Base",
+    "description": "Hezbollah launches 12 precision-guided Fateh-110 missiles at Israeli Northern Command HQ near Safed. Iron Dome intercepts 9 but 3 impact base, killing 6 IDF soldiers. Israel launches massive retaliatory air campaign across southern Lebanon.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["hezbollah", "israel"],
+    "tags": ["hezbollah-escalation", "precision-missiles", "northern-front"]
+  },
+  {
+    "id": "tl-025",
+    "date": "2026-01-18",
+    "title": "Israeli Intelligence: Iran 2 Weeks from Nuclear Weapon",
+    "description": "Mossad Director briefs allied intelligence chiefs that Iran has accumulated enough 90%+ enriched uranium for 2-3 warheads and is finalizing weaponization design. Israel declares 'window for military action closing rapidly.' US President convenes NSC emergency session.",
+    "category": "intelligence",
+    "significance": "foundational",
+    "actors": ["israel", "iran", "united-states"],
+    "tags": ["nuclear-weapon", "mossad", "intelligence-warning"]
+  },
+  {
+    "id": "tl-026",
+    "date": "2026-02-03",
+    "title": "Failed Diplomatic Last Resort: Oman Channel Collapses",
+    "description": "Secret US-Iran negotiations via Oman backchannel fail after Iran refuses to halt enrichment or readmit inspectors. Iranian Supreme National Security Council reportedly tells negotiators: 'The deterrent is non-negotiable.' US intelligence concludes diplomacy has been exhausted.",
+    "category": "diplomatic",
+    "significance": "major",
+    "actors": ["united-states", "iran"],
+    "tags": ["diplomacy-fails", "oman-channel", "last-resort"]
+  },
+  {
+    "id": "tl-027",
+    "date": "2026-02-15",
+    "title": "Iran Tests Shahab-4 ICBM Variant — 4,000km Range",
+    "description": "Iran conducts surprise test of extended-range Shahab-4 ballistic missile with 4,000km range, capable of reaching Southern Europe. First Iranian missile test with ICBM characteristics. NATO convenes emergency consultations. Missile potentially nuclear-capable.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["iran", "irgc"],
+    "tags": ["icbm-test", "shahab-4", "strategic-missile"]
+  },
+  {
+    "id": "tl-028",
+    "date": "2026-02-22",
+    "title": "THE TRIGGER: PMF Drone Swarm Kills 14 Marines at Al-Asad",
+    "description": "Coordinated swarm of 30+ Iranian Shahed-136 drones overwhelms C-RAM defenses at Al-Asad Air Base. 14 US Marines killed, 45 wounded — deadliest attack on US forces in the Middle East since the 1983 Beirut bombing. IRGC Quds Force confirmed to have directed the operation. President authorizes Operation Burning Spear.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["pmf", "us-centcom", "irgc"],
+    "tags": ["casus-belli", "al-asad-massacre", "drone-swarm", "trigger-event"]
+  },
+  {
+    "id": "tl-029",
+    "date": "2026-02-27",
+    "title": "President Announces Operation Burning Spear",
+    "description": "In primetime Oval Office address, the President announces Operation Burning Spear against Iran. Objectives: destroy ability to threaten US forces, degrade nuclear weapons capability, neutralize proxy command networks. 'We did not seek this war.' AUMF debate begins in Congress.",
+    "category": "political",
+    "significance": "foundational",
+    "actors": ["united-states"],
+    "tags": ["operation-burning-spear", "war-declaration", "presidential-address"]
+  },
+  {
+    "id": "tl-030",
+    "date": "2026-02-28",
+    "title": "Operation Burning Spear: Full-Scale US-Iran War Begins",
+    "description": "US launches massive air and cyber campaign against Iran. 200+ sorties strike IRGC bases, missile facilities, nuclear sites, and air defenses. Israel strikes Natanz and Fordow. Iran retaliates with 300+ ballistic missiles at US Gulf bases. Naval battle erupts in Strait of Hormuz. Hezbollah opens northern front against Israel. Oil hits $210/barrel. The Middle East enters its most dangerous conflict since 1991.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["united-states", "iran", "irgc", "israel", "hezbollah"],
+    "tags": ["war-begins", "operation-burning-spear", "full-scale-conflict", "day-one"]
+  },
+  {
+    "id": "tl-031",
+    "date": "2026-02-28",
+    "title": "Iran Retaliates: 300+ Ballistic Missiles Target US Gulf Bases",
+    "description": "IRGC Aerospace Force launches salvos of Fateh-313, Emad, and Qiam ballistic missiles targeting Al Udeid (Qatar), Al Dhafra (UAE), and Camp Arifjan (Kuwait). Patriot and THAAD intercept majority but several penetrate — 23 US personnel wounded. Largest ballistic missile barrage against US forces in history.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["irgc", "us-centcom"],
+    "tags": ["ballistic-retaliation", "missile-barrage", "gulf-bases"]
+  },
+  {
+    "id": "tl-032",
+    "date": "2026-02-28",
+    "title": "Strait of Hormuz: First Naval Engagement",
+    "description": "IRGC Navy fast-attack boats and Ghadir-class submarines engage US 5th Fleet in Strait of Hormuz. USS Bataan amphibious group sinks 3 IRGC vessels. Iran deploys sea mines; commercial shipping halted. Lloyd's declares Hormuz a war-risk zone. Insurance premiums surge 1,400%.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["irgc", "us-fifth-fleet"],
+    "tags": ["naval-battle", "hormuz", "sea-mines", "shipping-halt"]
+  },
+  {
+    "id": "tl-033",
+    "date": "2026-02-28",
+    "title": "Israel Strikes Natanz and Fordow Nuclear Sites",
+    "description": "IAF F-35I Adirs conduct penetrating strikes on Natanz enrichment facility and Fordow underground complex using GBU-57 bunker busters supplied by US. Multiple centrifuge halls destroyed. IAEA emergency session called. Iran vows 'response beyond imagination.'",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["israel", "iran"],
+    "tags": ["nuclear-strikes", "natanz", "fordow", "bunker-busters"]
+  },
+  {
+    "id": "tl-034",
+    "date": "2026-03-01",
+    "title": "Hezbollah Unleashes Massive Rocket Barrage on Northern Israel",
+    "description": "Hezbollah fires 450+ rockets and 40 precision-guided missiles at Israeli military and civilian targets across Galilee and Haifa. Iron Dome overwhelmed in northern sector — 12 Israeli civilians killed, 87 wounded. IDF activates full northern ground operation. 50,000 residents evacuate Haifa.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["hezbollah", "israel"],
+    "tags": ["day-two", "hezbollah-barrage", "northern-front", "haifa"]
+  },
+  {
+    "id": "tl-035",
+    "date": "2026-03-01",
+    "title": "Iran Activates Cyber Campaign: US Infrastructure Under Attack",
+    "description": "Iranian APT groups launch coordinated cyber attacks on US critical infrastructure. Port of Houston SCADA systems compromised. Colonial Pipeline disrupted for second time. Multiple US defense contractor networks breached. USCYBERCOM activates 'defend forward' posture. DHS raises cyber threat to SEVERE.",
+    "category": "cyber",
+    "significance": "major",
+    "actors": ["iran", "united-states"],
+    "tags": ["cyber-warfare", "infrastructure-attack", "critical-systems"]
+  },
+  {
+    "id": "tl-036",
+    "date": "2026-03-01",
+    "title": "US Destroys IRGC Command Network — 'Decapitation Strikes'",
+    "description": "B-2 Spirit bombers strike IRGC Quds Force headquarters, IRGC Navy command facility in Bandar Abbas, and 3 regional command bunkers. Multiple senior IRGC commanders confirmed killed. Pentagon states 'IRGC command and control significantly degraded.' Iran's Supreme Leader relocated to undisclosed location.",
+    "category": "military",
+    "significance": "foundational",
+    "actors": ["us-centcom", "irgc"],
+    "tags": ["day-two", "decapitation-strikes", "b-2", "command-network"]
+  },
+  {
+    "id": "tl-037",
+    "date": "2026-03-01",
+    "title": "Oil Surges Past $230/bbl — Global Economic Shockwave",
+    "description": "Brent crude hits $232/barrel as Hormuz closure removes 21% of global oil transit. Stock markets crash — Dow drops 2,100 points. European gas prices spike 340%. Emergency SPR releases coordinated by IEA. China and India scramble for alternative supply routes. Fed signals emergency rate pause.",
+    "category": "economic",
+    "significance": "major",
+    "actors": ["united-states", "iran"],
+    "tags": ["oil-crisis", "economic-shockwave", "markets-crash", "hormuz-closure"]
+  },
+  {
+    "id": "tl-038",
+    "date": "2026-03-01",
+    "title": "PMF Launches Coordinated Attacks Across Iraq — Green Zone Targeted",
+    "description": "Iran-backed PMF militias launch simultaneous drone and rocket attacks on US Embassy compound in Baghdad Green Zone, Erbil Air Base, and logistics convoys on MSR Tampa. 2 US contractors killed. Iraqi PM issues statement condemning attacks but refuses to authorize US ground operations against PMF.",
+    "category": "military",
+    "significance": "major",
+    "actors": ["pmf", "us-centcom"],
+    "tags": ["day-two", "green-zone", "iraq-attacks", "pmf-offensive"]
+  },
+  {
+    "id": "tl-039",
+    "date": "2026-03-01",
+    "title": "UN Security Council Emergency Session — Russia & China Block Ceasefire",
+    "description": "UN Security Council convenes emergency session on US-Iran war. US presents evidence of Iranian nuclear weapons program. Russia and China veto ceasefire resolution, calling US action 'illegal aggression.' UN Secretary-General calls for immediate de-escalation. Global protests erupt in 80+ cities.",
+    "category": "diplomatic",
+    "significance": "major",
+    "actors": ["united-states", "iran"],
+    "tags": ["day-two", "un-veto", "security-council", "global-protests"]
+  }
+]

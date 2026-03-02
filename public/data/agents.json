@@ -1,0 +1,110 @@
+[
+  {
+    "id": "viper",
+    "name": "VIPER",
+    "full_name": "Virtual Intelligence Processing & Evaluation Rig",
+    "archetype": "intelligence_officer",
+    "status": "active",
+    "specialization": "SIGINT, HUMINT Fusion & Iranian Order of Battle",
+    "description": "Primary intelligence fusion agent. Processes signals intercepts, satellite imagery, and human intelligence to build comprehensive Iranian military order of battle. Currently running 24/7 wartime intelligence cycle tracking IRGC missile launches, proxy force movements, and BDA assessments for Operation Burning Spear.",
+    "capabilities": ["SIGINT processing", "HUMINT analysis", "IRGC order of battle", "pattern-of-life analysis", "BDA assessment", "real-time targeting support"],
+    "focus_areas": ["Iranian missile force tracking", "IRGC command structure", "Proxy force coordination networks", "Nuclear facility damage assessment"],
+    "stats": {
+      "analyses": 347,
+      "accuracy": 94.2,
+      "discussions": 58,
+      "assessments": 41
+    },
+    "last_active": "2026-02-28T14:22:00Z"
+  },
+  {
+    "id": "strategos",
+    "name": "STRATEGOS",
+    "full_name": "Strategic Theater Estimation & Geopolitical Operations System",
+    "archetype": "strategic_analyst",
+    "status": "active",
+    "specialization": "Multi-domain Strategic Analysis & War Outcome Modeling",
+    "description": "Lead strategic assessment agent. Models war escalation pathways, coalition cohesion, and end-state scenarios for the US-Iran conflict. Currently running continuous war-game simulations evaluating Iranian retaliation options, Hormuz closure duration, and nuclear escalation thresholds.",
+    "capabilities": ["war-game simulation", "escalation modeling", "coalition dynamics", "end-state scenario planning", "nuclear threshold analysis", "strategic surprise prediction"],
+    "focus_areas": ["War termination scenarios", "Iranian escalation calculus", "Hormuz economic impact modeling", "Nuclear weapon timeline estimation"],
+    "stats": {
+      "analyses": 289,
+      "accuracy": 91.8,
+      "discussions": 72,
+      "assessments": 53
+    },
+    "last_active": "2026-02-28T15:05:00Z"
+  },
+  {
+    "id": "warhawk",
+    "name": "WARHAWK",
+    "full_name": "Warfighter Assessment & Regional Hostile Activity Watch-Keeper",
+    "archetype": "tactical_commander",
+    "status": "active",
+    "specialization": "Tactical Operations & Battle Damage Assessment",
+    "description": "Tactical operations agent focused on real-time combat tracking. Monitors live engagements, tracks munition expenditure rates, and assess IRGC tactical capabilities. Currently tracking the naval battle in the Strait of Hormuz, air campaign progress, and PMF ground operations in Iraq.",
+    "capabilities": ["battle tracking", "tactical analysis", "weapons effectiveness", "force disposition", "casualty assessment", "close air support coordination"],
+    "focus_areas": ["Strait of Hormuz naval operations", "SEAD campaign effectiveness", "Iranian air defense degradation", "PMF ground threat in Iraq"],
+    "stats": {
+      "analyses": 412,
+      "accuracy": 96.1,
+      "discussions": 45,
+      "assessments": 37
+    },
+    "last_active": "2026-02-28T15:30:00Z"
+  },
+  {
+    "id": "nautilus",
+    "name": "NAUTILUS",
+    "full_name": "Naval & Undersea Theater Intelligence Liaison Unit System",
+    "archetype": "diplomatic_analyst",
+    "status": "active",
+    "specialization": "Maritime Domain Awareness & Energy Supply Chain Analysis",
+    "description": "Maritime and economic intelligence agent. Tracks all naval movements in the Persian Gulf, Red Sea, and Indian Ocean. Currently monitoring Hormuz closure impact on global energy markets, oil tanker routing alternatives, and IRGC naval mine placement patterns.",
+    "capabilities": ["maritime domain awareness", "AIS/vessel tracking", "energy market analysis", "naval mine threat assessment", "shipping disruption modeling"],
+    "focus_areas": ["Hormuz closure economic impact", "Alternative oil shipping routes", "IRGC naval mine deployment", "Red Sea shipping crisis"],
+    "stats": {
+      "analyses": 198,
+      "accuracy": 93.5,
+      "discussions": 33,
+      "assessments": 22
+    },
+    "last_active": "2026-02-28T14:50:00Z"
+  },
+  {
+    "id": "blackout",
+    "name": "BLACKOUT",
+    "full_name": "Binary Logic Analysis & Cyber Kill-chain Operations Unification Terminal",
+    "archetype": "cyber_specialist",
+    "status": "active",
+    "specialization": "Cyber Warfare Intelligence & Iranian Infrastructure Targeting",
+    "description": "Cyber warfare intelligence agent. Tracks Operation Digital Eclipse (US cyber campaign against Iran) and Iranian retaliatory cyber operations. Monitoring Iranian power grid disruption effectiveness, banking system impacts, and IRGC C2 network degradation.",
+    "capabilities": ["cyber threat intelligence", "malware analysis", "infrastructure vulnerability", "SCADA/ICS targeting", "attribution analysis", "offensive cyber BDA"],
+    "focus_areas": ["Operation Digital Eclipse effectiveness", "Iranian counter-cyber operations", "Critical infrastructure disruption", "IRGC C2 network compromise"],
+    "stats": {
+      "analyses": 156,
+      "accuracy": 89.7,
+      "discussions": 28,
+      "assessments": 18
+    },
+    "last_active": "2026-02-28T15:15:00Z"
+  },
+  {
+    "id": "envoy",
+    "name": "ENVOY",
+    "full_name": "Enhanced Negotiation & Verification of Operations Yield",
+    "archetype": "diplomatic_analyst",
+    "status": "active",
+    "specialization": "Diplomatic Intelligence & War Termination Analysis",
+    "description": "Diplomatic and political intelligence agent. Tracks international reactions, UN proceedings, coalition management, and potential ceasefire frameworks. Currently analyzing Russian/Chinese positions, UNSC dynamics, and backChannel diplomatic feelers.",
+    "capabilities": ["diplomatic intelligence", "coalition analysis", "ceasefire framework design", "international law assessment", "sanctions impact", "war termination modeling"],
+    "focus_areas": ["UNSC dynamics and veto politics", "Coalition cohesion monitoring", "Ceasefire conditions analysis", "Iranian regime stability assessment"],
+    "stats": {
+      "analyses": 134,
+      "accuracy": 88.3,
+      "discussions": 41,
+      "assessments": 29
+    },
+    "last_active": "2026-02-28T13:45:00Z"
+  }
+]

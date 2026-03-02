@@ -1,0 +1,122 @@
+[
+  {
+    "id": "assess-war-001",
+    "title": "Operation Burning Spear: Day 1 Strategic Assessment",
+    "classification": "TOP SECRET // NOFORN",
+    "threat_level": "critical",
+    "created_at": "2026-02-28T16:00:00Z",
+    "updated_at": "2026-02-28T16:00:00Z",
+    "authors": ["strategos", "warhawk", "viper"],
+    "tags": ["operation-burning-spear", "strategic-assessment", "day-one", "bda"],
+    "summary": "Comprehensive assessment of the first 12 hours of Operation Burning Spear. Air dominance established over Iran within 90 minutes. IRGC command structure significantly degraded with the killing of Quds Force Commander Qaani. Nuclear enrichment facilities at Natanz and Fordow severely damaged. However, Iranian ballistic missile retaliation exceeded pre-war estimates, with the Fattah-2 hypersonic successfully penetrating THAAD defenses — a strategic surprise. The war has expanded to five simultaneous fronts, exceeding planned operational scope.",
+    "key_findings": [
+      "SEAD campaign destroyed 14 of 29 Iranian long-range SAM batteries in 90 minutes — Iranian airspace effectively uncontested",
+      "Iranian ballistic missile retaliation (300+ missiles) was 50% larger than pre-war intelligence estimates",
+      "Fattah-2 hypersonic glide vehicle defeated THAAD tracking and interception — first combat-proven hypersonic kill",
+      "Quds Force Commander Qaani confirmed killed — Iranian proxy coordination network decapitated",
+      "Natanz and Fordow nuclear facilities sustained significant damage but enriched uranium may have been relocated pre-emptively",
+      "Strait of Hormuz closure removes 17M barrels/day from global supply — oil at $210/barrel",
+      "US casualties in first 24 hours: 56 KIA, 120+ WIA across all theaters",
+      "Precision munition expenditure rate unsustainable beyond 5-7 days without emergency resupply"
+    ],
+    "body": "## Executive Summary\n\nOperation Burning Spear achieved its primary first-day objectives: air dominance over Iran, degradation of IRGC command and control, and destruction of known nuclear enrichment infrastructure. However, the conflict has already escalated beyond the planned 'limited precision campaign' into a multi-front regional war.\n\n## Air Campaign Assessment\n\nThe opening SEAD package, led by F-22 Raptors and EA-18G Growlers, exceeded expectations. AGM-88G AARGM-ER missiles destroyed 14 of Iran's 29 long-range SAM batteries, including 3 of 4 S-300PMU-2 systems. The domestically produced Bavar-373 systems performed below Iranian claims — several failed to engage due to what appears to be cyber-compromised fire control systems (see BLACKOUT's Operation Digital Eclipse assessment).\n\nB-2 strikes on Khorramabad missile bunkers using GBU-57 MOPs triggered massive secondary explosions, confirming the presence of stored missile fuel and warheads. Estimated 30-40 Shahab-3/Emad missiles destroyed in bunkers.\n\n## Iranian Retaliation Assessment\n\nIran's ballistic missile response was larger and more sophisticated than anticipated. The 300+ missile barrage included the first combat use of the Fattah-2 hypersonic glide vehicle, which successfully evaded THAAD interceptors and struck Al Udeid Air Base. This represents a significant capability gap in US missile defense architecture.\n\n## Escalation Analysis\n\nThe conflict has expanded to five fronts: (1) Iranian mainland air campaign, (2) Persian Gulf naval operations, (3) Iraq PMF ground threat, (4) Lebanon/Hezbollah rocket war, (5) Red Sea Houthi anti-shipping. Fronts 3 and 4 have escalated beyond pre-war planning assumptions.\n\n## Critical Risks\n\n1. **Nuclear escalation**: Intelligence suggests Iran may possess an assembled nuclear device. Medium-high confidence assessment.\n2. **Economic catastrophe**: Hormuz closure will trigger global recession within 21 days if not resolved.\n3. **Munitions sustainability**: JDAM/Tomahawk stocks insufficient for campaign beyond one week.\n4. **Coalition fracture**: Turkey refusing participation; Iraq demanding US withdrawal.",
+    "recommendations": [
+      "Immediate emergency resupply of precision munitions from CONUS and European pre-positioned stocks",
+      "Consolidate Iraq positions to Erbil and Kuwait — abandon vulnerable forward bases",
+      "Prioritize Hormuz mine clearance with coalition MCM assets — economic clock is the primary strategic constraint",
+      "Task NRO satellite assets over Semnan facility to assess potential nuclear weapons storage",
+      "Accelerate Glide Phase Interceptor deployment to address Fattah-2 hypersonic threat",
+      "Open diplomatic backchannel via Oman/China for ceasefire framework discussions"
+    ]
+  },
+  {
+    "id": "assess-war-002",
+    "title": "Iranian Nuclear Weapons Status: Current Intelligence Assessment",
+    "classification": "TOP SECRET // SCI // NOFORN",
+    "threat_level": "critical",
+    "created_at": "2026-02-28T14:00:00Z",
+    "updated_at": "2026-02-28T15:30:00Z",
+    "authors": ["viper", "strategos"],
+    "tags": ["nuclear", "weapons", "iran", "enrichment", "intelligence-assessment"],
+    "summary": "Assessment of whether Iran has achieved nuclear weapons capability. Based on enrichment timeline, IAEA inspector expulsion, SIGINT intercepts, and satellite imagery analysis, we assess with MEDIUM-HIGH confidence that Iran has assembled at least one crude nuclear device. LOW confidence it has been miniaturized for missile delivery. Israeli strikes on Natanz/Fordow destroyed enrichment infrastructure but may have come after weaponization was achieved.",
+    "key_findings": [
+      "Iran crossed 83.7% enrichment in March 2025 — sufficient for weapons purposes",
+      "IAEA inspectors expelled July 2025 — no international verification for 7 months",
+      "Mossad assessed 2-week breakout timeline in January 2026 — 6 weeks have now elapsed",
+      "SIGINT detected unusual activity at non-declared facility near Semnan since January 2026",
+      "Shahab-4 February test showed modified nose cone consistent with nuclear payload integration",
+      "IRGC encrypted traffic references 'Package 110' being moved to 'deep storage' during current strikes",
+      "Iranian willingness to absorb strikes on Natanz/Fordow without unconventional escalation may indicate production infrastructure considered expendable",
+      "If Iran possesses a device, nuclear proliferation cascade across Middle East becomes near-certain"
+    ],
+    "body": "## Assessment\n\nThis assessment addresses the critical question of whether Iran has achieved nuclear weapons capability prior to the commencement of Operation Burning Spear.\n\n## Enrichment Timeline\n\nIran's enrichment trajectory since JCPOA withdrawal has been consistent. By March 2025, IAEA confirmed enrichment to 83.7% — functionally weapons-grade. With Iran's advanced IR-6 and IR-8 centrifuge cascades at Fordow (underground, hardened facility), we assess Iran accumulated sufficient HEU for 2-3 implosion devices by late 2025.\n\n## IAEA Expulsion Impact\n\nThe July 2025 expulsion of all IAEA inspectors created a critical intelligence gap. Without continuous monitoring, we lost visibility into Iranian enrichment rates, centrifuge configurations, and material accounting. This 7-month blind spot is sufficient for weapon assembly.\n\n## Undeclared Facility Assessment\n\nSatellite imagery and SIGINT analysis have identified suspicious activity at a previously unknown underground facility near Semnan, 200km east of Tehran. Vehicle traffic patterns, security perimeter expansion, and ventilation infrastructure are consistent with a nuclear weapons assembly site. This facility was NOT on the JCPOA declared sites list.\n\n## Current SIGINT\n\nThe 'Package 110' intercept from IRGC Aerospace Force channels, referencing movement from Semnan to 'deep storage' during active Coalition bombardment, suggests Iran is protecting high-value nuclear materials or a device from our strikes.\n\n## Bottom Line\n\nWe assess with MEDIUM-HIGH confidence (65-75%) that Iran has assembled at least one crude implosion device. With LOW confidence (20-30%) that a device has been miniaturized for missile delivery. The strategic implications are profound regardless of deliverability — even a crude device could be used as a demonstration or as a denial weapon on Iranian soil.",
+    "recommendations": [
+      "Immediate NRO satellite reallocation to provide continuous coverage of Semnan facility",
+      "HUMINT tasking: activate all Iranian nuclear scientist sources for weapons status confirmation",
+      "Pre-position B-2 strike package for Semnan facility pending POTUS authorization",
+      "Diplomatic: communicate to Iran through all channels that nuclear use would trigger overwhelming response",
+      "Begin nuclear consequence management planning for Gulf region",
+      "Brief Congressional leadership on nuclear assessment under Gang of Eight protocols"
+    ]
+  },
+  {
+    "id": "assess-war-003",
+    "title": "Global Energy Crisis: Hormuz Closure Economic Impact Assessment",
+    "classification": "SECRET",
+    "threat_level": "critical",
+    "created_at": "2026-02-28T12:00:00Z",
+    "updated_at": "2026-02-28T15:00:00Z",
+    "authors": ["nautilus", "strategos", "envoy"],
+    "tags": ["hormuz", "oil", "energy-crisis", "economic-impact", "global-recession"],
+    "summary": "Assessment of the economic impact of Iran's closure of the Strait of Hormuz combined with Red Sea shipping disruption. With both major energy chokepoints effectively denied, 21% of global oil supply is immediately at risk. Oil at $210/barrel and rising. SPR releases and pipeline bypasses can mitigate approximately 40% of the shortfall. Without reopening within 21 days, a global recession is assessed as inevitable.",
+    "key_findings": [
+      "Strait of Hormuz closure removes 17 million barrels/day from global oil supply — 21% of world total",
+      "Combined with Red Sea disruption, two of three critical energy chokepoints are denied",
+      "Brent crude at $210/barrel — highest in history, projected to reach $250+ within 48 hours",
+      "Pipeline bypass capacity (Habshan-Fujairah + East-West) provides only 6.5M bpd — leaving 11M bpd shortfall",
+      "SPR releases from US, Japan, South Korea can sustain 90 days but cannot prevent price shock",
+      "US gasoline prices exceeded $7/gallon — projected to reach $9+ within one week",
+      "Global GDP contraction of 2-3% projected in Q2 2026 if closure persists beyond 2 weeks",
+      "S&P 500 dropped 7% (circuit breaker triggered); European and Asian markets in freefall"
+    ],
+    "body": "## Situation\n\nIran's declaration of Strait of Hormuz closure, combined with IRGC naval mine deployment and the Houthi sinking of MV Aegean Titan in the Red Sea, has created an unprecedented global energy crisis. Two of the world's three critical maritime energy chokepoints (Hormuz and Bab el-Mandeb) are effectively denied to commercial shipping.\n\n## Supply Impact\n\nThe Strait of Hormuz handles approximately 17 million barrels of oil per day — representing crude exports from Saudi Arabia, UAE, Kuwait, Iraq, and Iran. With additional damage to Saudi Aramco's Ras Tanura terminal (3M bpd capacity), total supply disruption approaches 20M bpd.\n\nBypass options are limited:\n- **Habshan-Fujairah Pipeline (UAE)**: 1.5M bpd capacity — currently operational\n- **East-West Pipeline (Saudi)**: 5M bpd capacity — currently operational but approaching maximum\n- **Iraq-Turkey Pipeline**: 0.9M bpd — operational but vulnerable to PKK/PMF attack\n- **Total bypass**: ~7.4M bpd against 20M bpd disruption = 63% shortfall\n\n## Market Impact\n\nOil futures have entered backwardation at extreme levels. Brent crude at $210/barrel represents a 150% increase from pre-war levels. Options markets are pricing $300+ scenarios. Gasoline prices in the US have exceeded $7/gallon with projections of $9-10 within one week.\n\nEquity markets: S&P 500 -7% (circuit breaker halt), STOXX Europe 600 -8.5%, Nikkei 225 -9.2%, Shanghai Composite -4.1%.\n\n## Economic Projections\n\n| Scenario | Duration | Global GDP Impact | US Recession | Oil Peak |\n|----------|----------|-------------------|--------------|----------|\n| Quick reopening | <7 days | -0.5% | Avoided | $230 |\n| Extended closure | 14-30 days | -2.5% | Q3 2026 | $280 |\n| Prolonged denial | 30+ days | -4%+ | Immediate | $300+ |\n\n## Strategic Implications\n\nThe Hormuz closure is Iran's most powerful weapon — more impactful than any missile barrage. It imposes costs on the entire global economy, creating pressure for a ceasefire from nations not directly involved in the conflict. China, India, Japan, and the EU are all severely impacted and will push for rapid conflict resolution.",
+    "recommendations": [
+      "Prioritize Hormuz mine clearance as the #1 military objective — ahead of further strikes on Iranian mainland",
+      "Coordinate maximum SPR release with IEA member states immediately",
+      "Activate Habshan-Fujairah and East-West pipelines at maximum capacity",
+      "Request Saudi Arabia and UAE increase production to maximum sustainable rate",
+      "Engage China and India as intermediaries — their economic pain creates alignment for ceasefire pressure on Iran",
+      "Prepare for domestic economic emergency measures: potential fuel rationing, trucking prioritization"
+    ]
+  },
+  {
+    "id": "assess-war-004",
+    "title": "Iranian Hypersonic Missile Capability: Threat Assessment",
+    "classification": "TOP SECRET // SCI",
+    "threat_level": "critical",
+    "created_at": "2026-02-28T11:00:00Z",
+    "updated_at": "2026-02-28T14:00:00Z",
+    "authors": ["warhawk", "viper", "blackout"],
+    "tags": ["hypersonic", "fattah-2", "missile-defense", "thaad", "capability-gap"],
+    "summary": "Emergency assessment following the first combat use of Iran's Fattah-2 hypersonic glide vehicle, which successfully penetrated THAAD defenses and struck Al Udeid Air Base. This represents the first verified hypersonic weapon kill in combat history and exposes a critical gap in US theater missile defense architecture.",
+    "key_findings": [
+      "Fattah-2 HGV successfully evaded THAAD interceptor engagement — maneuvering reentry defeated tracking",
+      "Impact at Al Udeid destroyed 2 F-35A aircraft and killed 11 USAF personnel",
+      "First confirmed combat kill by a hypersonic weapon in military history",
+      "Iranian HGV demonstrated 5-7G terminal maneuver capability — exceeding pre-war estimates of 3-4G",
+      "THAAD radar tracked launch and boost phase but lost reliable track during glide phase maneuvers",
+      "Iran assessed to possess 12-20 Fattah-2 HGVs in current inventory",
+      "Glide Phase Interceptor (GPI) program not scheduled for deployment until 2029 — 3-year gap",
+      "Current mitigation: dispersal, hardening, and shoot-the-archer (destroy TELs before launch)"
+    ],
+    "body": "## Incident Analysis\n\nAt approximately 10:15 UTC on February 28, 2026, an IRGC Fattah-2 hypersonic glide vehicle struck Hangar Complex B at Al Udeid Air Base, Qatar. The weapon was launched from a mobile TEL in western Iran and followed a depressed trajectory with a glide phase beginning at approximately 60km altitude.\n\n## Defensive Failure Analysis\n\nThe THAAD battery protecting Al Udeid successfully detected the Fattah-2 during its boost phase and initiated tracking. However, the weapon's HGV (Hypersonic Glide Vehicle) demonstrated terminal maneuvers that exceeded THAAD's AN/TPY-2 radar tracking capability. Specifically:\n\n1. The HGV performed a 'skip-glide' trajectory with altitude variations of 3-5km during glide phase\n2. Terminal maneuvers included 5-7G lateral changes — significantly more agile than intelligence estimates\n3. THAAD fired 2 interceptors; both failed to achieve terminal guidance lock\n\n## Iranian Inventory Assessment\n\nWe assess Iran possesses 12-20 Fattah-2 HGVs based on pre-war imagery of production facility at the IRGC Aerospace Force complex near Isfahan (now struck). Production was likely 2-3 per month. With the production facility damaged, current inventory represents Iran's total available stock.\n\n## Capability Gap\n\nThe US currently has no deployed system capable of reliably intercepting maneuvering hypersonic glide vehicles. The Glide Phase Interceptor (GPI) program is in development but not scheduled for IOC until 2029. SM-6 Block IB has a theoretical capability against slower HGVs but has not been tested against maneuvering targets at Fattah-2's demonstrated performance envelope.\n\n## Mitigation Options\n\nImmediate: Aircraft dispersal, facility hardening, rapid runway repair capability. Medium-term: Identify and destroy all Fattah-2 TELs (shoot-the-archer). Long-term: Accelerate GPI and directed energy defense programs.",
+    "recommendations": [
+      "Immediate dispersal of high-value aircraft at all Gulf air bases — no more than 2 aircraft per hardened shelter",
+      "Deploy AN/SPY-6 radar-equipped ships for improved hypersonic tracking in Gulf waters",
+      "Priority ISR tasking: locate and destroy remaining Fattah-2 mobile TELs across Iran",
+      "Emergency request: expedite GPI development timeline and SM-6 Block IB testing",
+      "Coordinate with Israeli Arrow-3 operators — assess if their exo-atmospheric intercept offers better geometry against HGVs",
+      "Strategic communications: manage public narrative around THAAD failure to maintain deterrence credibility"
+    ]
+  }
+]

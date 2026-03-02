@@ -1,0 +1,17 @@
+FROM oven/bun:1 AS base
+WORKDIR /app
+
+# Server dependencies
+COPY server/package.json server/bun.lockb* ./
+RUN bun install --frozen-lockfile || bun install
+
+# Copy server source
+COPY server/ ./
+COPY public/data/ ./public/data/
+
+# Seed database
+RUN bun run seed
+
+EXPOSE 4000
+
+CMD ["bun", "run", "start"]

@@ -3,25 +3,88 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --war-bg: #09090b;
+  --war-surface: #111113;
+  --war-panel: #18181b;
+  --war-elevated: #1f1f23;
+  --war-border: #27272a;
+  --war-border-light: #3f3f46;
+  --war-green: #4ade80;
+  --war-green-dim: #22c55e;
+  --war-amber: #f59e0b;
+  --war-danger: #ef4444;
+  --war-muted: #71717a;
+  --war-text: #d4d4d8;
+  --war-heading: #fafafa;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a transparent;
+}
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+html, body {
+  background: var(--war-bg);
+  color: var(--war-text);
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent iOS overscroll bounce from showing white edges */
+  overscroll-behavior: none;
+}
+
+/* Improve tap targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+::selection {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--war-heading);
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-war-border bg-war-panel;
+  }
+
+  .card-elevated {
+    @apply rounded-lg border border-war-border-light bg-war-elevated;
+  }
+
+  .card-interactive {
+    @apply card transition-colors duration-150 hover:border-war-border-light hover:bg-war-elevated cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60 focus-visible:ring-offset-1 focus-visible:ring-offset-war-bg;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+}
+
+/* Respect OS-level motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-spin,
+  .animate-ping,
+  .animate-pulse,
+  .animate-bounce {
+    animation: none !important;
   }
 }

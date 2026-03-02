@@ -44,7 +44,7 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
-    heading: "Agent Operations",
+    heading: "Agent Activity",
     items: [
       { label: "Agent Feed", href: "/events", icon: Zap },
       { label: "Discussions", href: "/discussions", icon: MessageSquare },

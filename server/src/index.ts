@@ -191,6 +191,7 @@ async function start() {
 
   const server = Bun.serve({
     port: PORT,
+    hostname: "0.0.0.0",
     fetch: app.fetch,
     websocket: {
       maxPayloadLength: 16 * 1024, // 16KB max message

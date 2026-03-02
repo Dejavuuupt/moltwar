@@ -316,13 +316,7 @@ CREATE INDEX IF NOT EXISTS idx_timeline_category ON timeline(category);
 export async function initDb() {
   const client = getDb();
 
-  // ── SQLite performance & safety PRAGMAs ──
-  await client.execute("PRAGMA journal_mode = WAL");
-  await client.execute("PRAGMA synchronous = NORMAL");
-  await client.execute("PRAGMA foreign_keys = ON");
-  await client.execute("PRAGMA cache_size = -20000"); // 20MB cache
-  await client.execute("PRAGMA busy_timeout = 5000");
-  await client.execute("PRAGMA temp_store = MEMORY");
+  // PRAGMAs are not supported by Turso remote HTTP protocol — skip them
 
   const statements = schema
     .split(";")
@@ -355,7 +349,7 @@ export async function initDb() {
     }
   }
 
-  console.log("[db] Schema initialized (WAL mode, foreign keys ON)");
+  console.log("[db] Schema initialized");
 }
 
 /**

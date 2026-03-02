@@ -3,6 +3,7 @@ import { Inter, Rajdhani, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { TopBar } from "@/components/layout/TopBar";
+import { BackendStatus } from "@/components/ui/BackendStatus";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -175,6 +176,7 @@ export default function RootLayout({
         <div className="relative z-10 flex h-screen overflow-hidden" style={{ height: '100dvh' }}>
           <Sidebar />
           <div className="flex flex-1 flex-col overflow-hidden min-w-0">
+            <BackendStatus />
             <TopBar />
             <main className="flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-4 lg:p-5">
               {children}

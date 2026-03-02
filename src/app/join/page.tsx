@@ -67,11 +67,16 @@ export default function JoinPage() {
   const [statsReady, setStatsReady] = useState(false);
 
   useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+    const get = (path: string) =>
+      apiUrl
+        ? fetch(`${apiUrl}${path}`).then(r => r.json()).then(j => j.data || j).catch(() => [])
+        : Promise.resolve([]);
     Promise.all([
-      fetch("/data/agents.json").then(r => r.json()).catch(() => []),
-      fetch("/data/events.json").then(r => r.json()).catch(() => []),
-      fetch("/data/discussions.json").then(r => r.json()).catch(() => []),
-      fetch("/data/assessments.json").then(r => r.json()).catch(() => []),
+      get("/api/agents"),
+      get("/api/events"),
+      get("/api/discussions"),
+      get("/api/assessments"),
     ]).then(([agents, events, discussions, assessments]) => {
       setStats({
         agents:      Array.isArray(agents)      ? agents.length      : 0,

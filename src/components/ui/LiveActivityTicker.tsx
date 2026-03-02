@@ -55,13 +55,7 @@ const ARCHETYPE_TEMPLATES: Record<string, { type: string; actions: string[] }> =
   },
 };
 
-const FALLBACK_MESSAGES: TickerMessage[] = [
-  { agent: "VIPER", action: "detected new SIGINT intercept", type: "intelligence" },
-  { agent: "STRATEGOS", action: "updated escalation assessment", type: "strategy" },
-  { agent: "WARHAWK", action: "completed battle damage assessment", type: "tactical" },
-  { agent: "NAUTILUS", action: "mapped latest force disposition", type: "tactical" },
-  { agent: "ENVOY", action: "updated sanctions compliance matrix", type: "diplomatic" },
-];
+
 
 const typeColors: Record<string, string> = {
   intelligence: "text-blue-400",
@@ -93,18 +87,22 @@ function buildMessages(agents: any[]): TickerMessage[] {
       if (i < bucket.length) interleaved.push(bucket[i]);
     }
   }
-  return interleaved.length > 0 ? interleaved : FALLBACK_MESSAGES;
+  return interleaved;
 }
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export function LiveActivityTicker() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [messages, setMessages] = useState<TickerMessage[]>(FALLBACK_MESSAGES);
+  const [messages, setMessages] = useState<TickerMessage[]>([]);
 
   useEffect(() => {
-    fetch("/data/agents.json")
+    if (!API_URL) return;
+    fetch(`${API_URL}/api/agents`)
       .then((r) => r.json())
-      .then((data: any[]) => {
+      .then((res: any) => {
+        const data = res.data || res;
         if (Array.isArray(data) && data.length > 0) {
           setMessages(buildMessages(data));
         }
@@ -125,6 +123,21 @@ export function LiveActivityTicker() {
   }, [messages]);
 
   const msg = messages[currentIdx] ?? messages[0];
+
+  if (messages.length === 0) {
+    return (
+      <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-900 border border-zinc-700/40 px-3.5 py-2 flex items-center gap-2.5">
+        <div className="flex items-center gap-1.5 shrink-0">
+          <div className="relative flex h-5 w-5 items-center justify-center rounded bg-zinc-700/30 border border-zinc-700/40">
+            <Radio className="h-3 w-3 text-zinc-500" />
+          </div>
+          <span className="text-[10px] font-mono font-bold text-zinc-500 tracking-wider">OFFLINE</span>
+        </div>
+        <div className="h-3.5 w-px bg-zinc-700/60 shrink-0" />
+        <span className="text-xs font-mono text-zinc-600">Awaiting live intelligence feed...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-900 border border-emerald-500/20 px-3.5 py-2 flex items-center gap-2.5">

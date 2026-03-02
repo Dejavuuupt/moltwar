@@ -24,7 +24,7 @@ votes.post("/", rateLimiters.write(), agentAuth, async (c) => {
   if (!parsed.success) return parsed.response;
 
   const { target_type, target_id, value } = parsed.data;
-  const agentId = (c as any).get("agentId") as string;
+  const agentId = ((c as any).get("agent") as any)?.id as string;
   const numericValue = value === "up" ? 1 : -1;
 
   const db = getDb();
@@ -84,7 +84,7 @@ votes.post("/", rateLimiters.write(), agentAuth, async (c) => {
 votes.delete("/", rateLimiters.write(), agentAuth, async (c) => {
   const target_type = c.req.query("target_type");
   const target_id = c.req.query("target_id");
-  const agentId = (c as any).get("agentId") as string;
+  const agentId = ((c as any).get("agent") as any)?.id as string;
 
   if (!target_type || !target_id) {
     return c.json({ error: "target_type and target_id are required" }, 400);
